@@ -3,9 +3,7 @@ package ioc.question_007;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.ContextLoaderListener;
-import javax.servlet.*;
 
 /**
  * What is the preferred way to close an application context?
@@ -19,12 +17,9 @@ import javax.servlet.*;
 public class AppContextCreation {
 
  public static void main( String[] args ) {
-        ApplicationContext apContext = new AnnotationConfigApplicationContext(MyConfiguration.class);
-        ((ConfigurableApplicationContext)apContext).registerShutdownHook();
-        final Object pesrson = apContext.getBean("person");
-        System.out.println(pesrson);
-
-
-
-    }
+//        ApplicationContext apContext = new AnnotationConfigApplicationContext(MyConfiguration.class);
+//        ((ConfigurableApplicationContext)apContext).registerShutdownHook();
+//        final Object pesrson = apContext.getBean("person");
+//        System.out.println(pesrson);
+ }
 }

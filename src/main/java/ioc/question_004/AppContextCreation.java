@@ -9,7 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * This class create a standalone application context using the annotation config way.
  * @todo We can use other ways like:
  *      {@link ClassPathXmlApplicationContext}
- *
  */
 
 public class AppContextCreation {

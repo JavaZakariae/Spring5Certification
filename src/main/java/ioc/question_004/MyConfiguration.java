@@ -1,10 +1,10 @@
 package ioc.question_004;
 
-
 import ioc.commun.Person;
 import ioc.commun.Profession;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
+
+import java.time.LocalDate;
 
 @Configuration
 public class MyConfiguration {
@@ -12,17 +12,18 @@ public class MyConfiguration {
     @Bean
     public Profession profession(){
         return Profession.builder()
-                         .name("professeur")
-                         .description("professeur a l'universite")
+                         .name("professor")
+                         .description("professor in the university")
                          .build();
     }
 
     @Bean
     public Person person(){
         return Person.builder()
-                     .name("wijsen")
+                     .name("Bagna")
                      .age(52)
                      .profession(profession())
+                     .dateOfBirth(LocalDate.of(1950,12,13))
                      .build();
     }
 
