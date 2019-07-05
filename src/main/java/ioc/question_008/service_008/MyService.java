@@ -1,7 +1,7 @@
-package ioc.question_008.service;
+package ioc.question_008.service_008;
 
 import ioc.commun.Person;
-import ioc.question_008.dao.MyDaoRepository;
+import ioc.question_008.dao_008.MyDaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

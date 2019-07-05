@@ -2,10 +2,10 @@ package ioc.question_008;
 
 import ioc.commun.Person;
 import ioc.question_004.MyConfiguration;
-import ioc.question_008.dao.MyDaoRepository;
-import ioc.question_008.dao.dao;
-import ioc.question_008.service.MyService;
-import ioc.question_008.service.service;
+import ioc.question_008.dao_008.MyDaoRepository;
+import ioc.question_008.dao_008.dao;
+import ioc.question_008.service_008.MyService;
+import ioc.question_008.service_008.service;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

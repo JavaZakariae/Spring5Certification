@@ -1,0 +1,14 @@
+CREATE TABLE persons (
+  id            INTEGER PRIMARY KEY auto_increment,
+  name          VARCHAR(30),
+  age           Integer,
+  dateOfBirth   Date
+);
+
+
+CREATE TABLE professions (
+  id            INTEGER PRIMARY KEY auto_increment,
+  name          VARCHAR(30),
+  description   VARCHAR(55)
+);
+
