@@ -1,4 +1,4 @@
-package data_transaction_jpa.question_03_04_05_06_07;
+package data.question_03_04_05_06_07;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -18,9 +18,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * 1-Template design pattern define some steps which are executed in order, the super type define this order,
  * the subclasses implement only some predefined steps.
  * 2-
- *   a- RowMapper<Object>: allows to handle rows in a result set row by row {@link data_transaction_jpa.question_02.MyDataSource#rowMapper(JdbcTemplate)}.
+ *   a- RowMapper<Object>: allows to handle rows in a result set row by row {@link data.question_02.MyDataSource#rowMapper(JdbcTemplate)}.
  *   b-resultSetExtractor<List<Object>>:
- *                         allows to process the entire result set {@link data_transaction_jpa.question_02.MyDataSource#resultSetExtractor(JdbcTemplate)}.
+ *                         allows to process the entire result set {@link data.question_02.MyDataSource#resultSetExtractor(JdbcTemplate)}.
  *   c-@todo example to make for the RowCallbackHandler
  * * 3-yes
  * 4-Jdbc template release the connection after every request. jdbctemplate is trade safe

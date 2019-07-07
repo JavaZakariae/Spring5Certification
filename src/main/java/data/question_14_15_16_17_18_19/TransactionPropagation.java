@@ -1,8 +1,5 @@
-package data_transaction_jpa.question_14_15_16_17_18_19;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+package data.question_14_15_16_17_18_19;
 import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *

@@ -1,15 +1,15 @@
-package data_transaction_jpa.question_12_13;
+package data.question_12_13;
 import org.springframework.transaction.annotation.Isolation;
 
 /**
- * Problems we can get when two or more transactions are executing in parallel on the same data_transaction_jpa.
- * {@link IsolationLevel.READ_UNCOMMITTED} is the slowest isolation level, T1 can Read uncommitted data_transaction_jpa from T2.
+ * Problems we can get when two or more transactions are executing in parallel on the same data.
+ * {@link IsolationLevel.READ_UNCOMMITTED} is the slowest isolation level, T1 can Read uncommitted data from T2.
  * This Isolation level can produces Dirty Read problem:
  * On one cell for example, T1 read 10, T2 write 15,T1 read 15, T2 rollback, T1 get bad result.
  * T1---10---------25---
  * T2---10-----15----10-
  *
- * Dirty read occurs when T1 read data_transaction_jpa that was not yet committed by another Transaction.
+ * Dirty read occurs when T1 read data that was not yet committed by another Transaction.
  * To solve this problem we should use {@link IsolationLevel.READ_COMMITTED}
  *
  * With {@link IsolationLevel.READ_COMMITTED}, non-repeatable read problem can be produced.

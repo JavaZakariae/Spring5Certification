@@ -1,8 +1,7 @@
-package data_transaction_jpa.question_20_21_22_23_24;
+package data.question_20_21_22_23_24;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+
 /**
  *
  * ORM (Object relational model): mapping between object oriented data to relational data.
@@ -73,7 +72,23 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
  *      DataSourceTransactionManager
  *      JpaTransactionManager : single transactional resource.
  * What do you have to configure to use JPA with Spring? How does Spring Boot make this
- * easier? spring-boot-starter-data-jpa -- Spring Boot autoconfigures data access layer related beans.
+ * easier?
+ *      *Spring: dependencies to an ORM framework, a database driver, and a transaction manager.
+ *      *Sprig boot: dependencies to spring-boot-starter-data-jpa, spring Boot autoconfigures data access layer related beans.
+ *      *implement Entity classes.
+ *      *Defining a Datasource and a Transaction Manager.
+ *      *implementing repositories interfaces.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *
  */
 public class SpringJPA {

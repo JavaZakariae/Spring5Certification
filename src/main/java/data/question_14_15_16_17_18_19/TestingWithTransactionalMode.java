@@ -1,4 +1,4 @@
-package data_transaction_jpa.question_14_15_16_17_18_19;
+package data.question_14_15_16_17_18_19;
 
 /**
  *

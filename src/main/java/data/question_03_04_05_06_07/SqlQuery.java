@@ -1,7 +1,7 @@
-package data_transaction_jpa.question_03_04_05_06_07;
+package data.question_03_04_05_06_07;
 
 
-import data_transaction_jpa.question_02.MyDataSource;
+import data.question_02.MyDataSource;
 import ioc.commun.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

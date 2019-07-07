@@ -1,4 +1,4 @@
-package data_transaction_jpa.question_08_09_10_11;
+package data.question_08_09_10_11;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;

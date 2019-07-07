@@ -1,4 +1,4 @@
-package data_transaction_jpa.question_02;
+package data.question_02;
 
 
 import ioc.commun.Person;
@@ -143,8 +143,8 @@ public class MyDataSource {
     public DataSource thirdDataSource (){
         final EmbeddedDatabase embeddedDatabase = new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .addScripts("databaseconfig/ddl.script",//ddl data_transaction_jpa definition language define database schema
-                        "databaseconfig/dml.script")//dml data_transaction_jpa manipulation language CRUD operations
+                .addScripts("databaseconfig/ddl.script",//ddl data definition language define database schema
+                        "databaseconfig/dml.script")//dml data manipulation language CRUD operations
                 .build();
         return embeddedDatabase;
 
