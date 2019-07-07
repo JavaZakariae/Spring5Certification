@@ -1,6 +1,7 @@
 package data.question_25_26_27_28_29.services;
 
 import data.commun.Person;
+import data.commun.Profession;
 import data.question_25_26_27_28_29.repositories.PersonRepository;
 import data.question_25_26_27_28_29.repositories.ProfessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,17 @@ public class MyService implements service {
     @Override
     public void add( Person person )
     {
-        this.personRepository.save(person);
+        Profession profession = person.getProfession();
+        if(profession!=null)
+        {
+            personRepository.save(person);
+            return;
+        }
+        professionRepository.save(person.getProfession());
+        personRepository.save(person);
+
+
+
     }
     @Override
     public List<Person> getListOfPersons() {

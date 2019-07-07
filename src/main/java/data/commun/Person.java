@@ -34,5 +34,7 @@ public class Person {
     private Profession profession;
 
 
-
+    public Profession getProfession() {
+        return profession;
+    }
 }
