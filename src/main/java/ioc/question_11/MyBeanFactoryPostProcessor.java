@@ -20,7 +20,7 @@ import java.time.LocalDate;
  *  {@link BeanFactoryPostProcessor} help to customize the {@link BeanDefinition} loaded to the ioc container
  *
  *  bean factories should be declared as a static method to allow the container to pick them ithout need to instatiate
- *  the configuration class. otherwise problem withg the annotation @Autowired ...
+ *  the configurations class. otherwise problem withg the annotation @Autowired ...
  *
  *
  */

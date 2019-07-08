@@ -1,14 +1,14 @@
 package data.commun;
 import lombok.*;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 
-@Builder
-@Setter
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Entity(name = "Persons")
@@ -28,10 +28,19 @@ public class Person {
     @Column(name = "Date_of_Birth")
     private LocalDate dateOfBirth;
 
+
+    //one person could have only one adress
+    @OneToOne
+    private Address address;
+
     // TODO: 07/07/2019
     @ManyToOne
     @JoinColumn(name = "Profesion_id")
     private Profession profession;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
 
     public Profession getProfession() {

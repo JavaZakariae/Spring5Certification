@@ -3,7 +3,7 @@ package data.question_12_13;
 
 /**
  * What is @EnableTransactionManagement for?
- * Enable to use @Transactional, One configuration class should be annotated.
+ * Enable to use @Transactional, One configurations class should be annotated.
  *
  *
  */

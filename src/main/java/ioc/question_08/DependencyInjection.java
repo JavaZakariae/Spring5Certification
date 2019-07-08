@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Import;
 
 /**
  * Can you describe:
- * 1-Dependency injection using Java configuration?
+ * 1-Dependency injection using Java configurations?
  * 2-Dependency injection using annotations (@Autowired)?
  * 3-Component scanning, Stereotypes?
  * 4-Scopes for Spring beans? What is the default scope?
  *
- *  1-Java configuration:
+ *  1-Java configurations:
  *      @Bean the annotated method will produces a bean that will be managed by the container.
  *      @Configuration indicates that the annotated class contains one or more methods annotated by @Bean.
  *  2,3- (@Component, @Autowired)

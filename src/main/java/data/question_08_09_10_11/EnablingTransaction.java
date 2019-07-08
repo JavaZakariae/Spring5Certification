@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * What is the PlatformTransactionManager?
  *
  * A transaction Manager {@link  PlatformTransactionManager}, should exists on the classpath to enable transaction management.
- * enable transaction by annotating one configuration class {@link EnableTransactionManagement}.
+ * enable transaction by annotating one configurations class {@link EnableTransactionManagement}.
  * @Transactional on classes or method that should run in transaction.
  *
  *

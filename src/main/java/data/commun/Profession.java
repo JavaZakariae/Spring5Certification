@@ -6,11 +6,11 @@ import lombok.*;
 import javax.persistence.*;
 
 
-@Builder
-@Setter
 @Getter
+@Setter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor
 @Entity(name = "Professions")
 public class Profession {
 
@@ -24,6 +24,5 @@ public class Profession {
 
     @Column(name = "Description")
     private String description;
-
 
 }

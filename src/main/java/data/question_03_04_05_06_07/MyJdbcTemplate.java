@@ -34,7 +34,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *      -transaction handeling
  *      -close connection statement and the result set
  *  Operation that the client should perform:
- *      -configuration of the connectiopn parameters
+ *      -configurations of the connectiopn parameters
  *      -sql statement and its parameters
  *      -mapping for result set
  *

@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
  * 1- Advantages of Java Config in comparison to the xml way:
  *      type safe(possible errors thrown in compilation time)
  *    Disadvantage:
- *      recompilation in case of modification, not the samething for xml configuration.
+ *      recompilation in case of modification, not the samething for xml configurations.
  *
  * 2-What does the @Bean annotation do?
- *      Annotated on a method in a configuration class, it indicates to the container to manage the created bean, it also means that the
+ *      Annotated on a method in a configurations class, it indicates to the container to manage the created bean, it also means that the
  *      specified bean is on full mode, inter-calls between bean are intercepted by the container.
  *      Annotated on a class level, specified bean is on lite mode, no interception by the container in case of inter-calls
  *      @todo full vs lite mode

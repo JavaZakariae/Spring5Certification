@@ -34,7 +34,7 @@ import java.time.LocalDate;
  * What do you have to do to enable the detection of the @Aspect annotation?
  * What does @EnableAspectJAutoProxy do?
  *
- * To enable @Aspect, the annotation @EnableAspectJAutoProxy should be applied to a configuration class.
+ * To enable @Aspect, the annotation @EnableAspectJAutoProxy should be applied to a configurations class.
  * note that the aspectjweaver should be on the classpath to use EnableAspectJAutoProxy.
  * Only class annotated with (aspect+Component) or (Aspect+Bean) will be taked in consideration for creating advices.
  *

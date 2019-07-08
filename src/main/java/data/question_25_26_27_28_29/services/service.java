@@ -7,4 +7,5 @@ import java.util.List;
 public interface service {
     void add( Person person );
     List<Person> getListOfPersons();
+    void remove( Person person2 );
 }
