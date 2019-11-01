@@ -5,9 +5,9 @@ This repository contains my code examples for the preparation of the certificati
 The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
 
 
-To prepare my certification I read many books and articles, many Pluralsight courses and some Youtube videos on specific subjects.
+To prepare my certification, I read many books and articles, many Pluralsight courses and some Youtube videos on specific subjects.
 
-To help you to prepare the certification, I recommend to learn from following resources, som are payed, but they deserve to be not free.
+To help you to prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
 
 
 
@@ -23,22 +23,22 @@ This book should be a must for everyone.
 
 [Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
 
-help you to understand how the Spring Framework is using some design patterns internally.
+Will help you to understand how the Spring Framework is using some design patterns internally.
 
 
 [Spring in Action: Covers Spring 4](https://www.amazon.com/Spring-Action-Covers-4/dp/161729120X/ref=sr_1_2?keywords=spring+in+action&qid=1570962746&sr=8-2):
 
- I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming. It is not mandatory to read every chapter in the book.
+ I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming..., It is not mandatory to read every chapter in the book.
 
 [Spring Boot in Action](https://www.amazon.com/Spring-Boot-Action-Craig-Walls/dp/1617292540/ref=sr_1_2?qid=1570963413&refinements=p_27%3ACraig+Walls&s=books&sr=1-2&text=Craig+Walls):
 
- for a deepper understanding of Spring Boot.
+ for a deepper understanding of the Spring Boot.
 
 ## Youtube channel
 
 [Laurentiu Spilca](https://www.youtube.com/channel/UC0z3MpVGrpSZzClXrYcZBfw):
 
- Laurentiu Spilca made a playlist on Spring Fundamentals, you will find very good content on DI,AOP,Transaction,Data,Rest,Actuator and many more...
+ Laurentiu Spilca made a playlist on Spring Fundamentals, you will find very good content on DI, AOP, Transaction, Data, Rest, Actuator and many more...
 
 [Melardev](https://www.youtube.com/watch?v=d1pRZW0dOIg&list=PLfkTJXI2Tk-cDvcd5pTnpHZXi-XgacpDG):
 
