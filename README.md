@@ -46,10 +46,8 @@ On his channel, Melardev explained the archirtecture of the Spring MVC module wi
 
 ## Pluralsight courses(paid but worth it)
 
-#### Spring Boot
-[Creating Your First Spring Boot Application](https://app.pluralsight.com/library/courses/spring-boot-first-application/table-of-contents)
-
-[Spring Boot: Efficient Development, Configuration, and Deployment](https://app.pluralsight.com/library/courses/spring-boot-efficient-development-configuration-deployment/table-of-contents)
+#### AOP
+[Aspect Oriented Programming](https://app.pluralsight.com/library/courses/aspect-oriented-programming-spring-aspectj/table-of-contents)
 
 #### Spring JDBC
 [Building Applications Using Spring JDBC
@@ -58,8 +56,12 @@ On his channel, Melardev explained the archirtecture of the Spring MVC module wi
 #### Spring data jpa
 [Getting Started with Spring Data JPA](https://app.pluralsight.com/library/courses/spring-data-jpa-getting-started/table-of-contents)
 
-#### AOP
-[Aspect Oriented Programming](https://app.pluralsight.com/library/courses/aspect-oriented-programming-spring-aspectj/table-of-contents)
+
+#### Spring Boot
+[Creating Your First Spring Boot Application](https://app.pluralsight.com/library/courses/spring-boot-first-application/table-of-contents)
+
+[Spring Boot: Efficient Development, Configuration, and Deployment](https://app.pluralsight.com/library/courses/spring-boot-efficient-development-configuration-deployment/table-of-contents)
+
 
 ## Other ressources
 [Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains the responses of the question of the official study-guide.
