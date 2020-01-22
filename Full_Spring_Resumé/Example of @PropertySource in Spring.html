@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-US"> <head>
+<meta charset="UTF-8" />
+<title>Example of @PropertySource in Spring</title>
+<meta name="keywords" content="PropertySource, Environment, spring" />
+<meta name="description" content="@PropertySource in spring can read the values from property file. @PropertySource is annotation based and we need to provide the config file path." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.concretepage.com/spring/example_propertysource_spring" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ConcretePage" />
+<meta name="ROBOTS" content="INDEX, FOLLOW" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="https://www.concretepage.com/spring/example_propertysource_spring" />
+<link rel="SHORTCUT ICON" href="/images/favicon.ico" type="image/x-icon" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-37051123-1" type="c5a686033b2986df8537edd4-text/javascript"></script>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-37051123-1');
+</script><link href="/common/css/styles.01.05.19.css" rel="stylesheet" type="text/css" /><script type="c5a686033b2986df8537edd4-text/javascript" src="/common/js/jquery-2.2.4-and-pretify.js" async></script><script type="c5a686033b2986df8537edd4-text/javascript">
+    window._mNHandle = window._mNHandle || {};
+    window._mNHandle.queue = window._mNHandle.queue || [];
+    medianet_versionId = "121199"; 
+    (function() {
+        var sct = document.createElement("script"),
+        sctHl = document.getElementsByTagName("script")[0],
+        isSSL = 'https:' == document.location.protocol;
+        sct.type = "text/javascript";
+        sct.src = (isSSL ? 'https:' : 'http:') + '//contextual.media.net/dmedianet.js?cid=8CU1QF63I' + (isSSL ? '&https=1' : '')+'';
+        sct.async = "async";
+        sctHl.parentNode.insertBefore(sct, sctHl);
+    })();
+</script>
+</head><body>
+<div class="topHdColor">
+<div class="feedBlock">
+<div style="float:right; margin:4px 8px 0 0;">
+</div>
+<ul class="feedburner" style="float:right; ">
+<li> <a href="/forum/login">| Join Forum </a></li> <li> <a href="/forum/login"> Sign In</a> </li> <li><a href="/forum/ask">Ask Question</a></li>
+</ul>
+</div>
+</div>
+<div class="headerBg">
+<div class="headerBlock">
+<div class="logo"><span class="logText fl"><a href="/" title="Java, Spring, Angular, Hibernate and Android">ConcretePage.com</a></span></div>
+<div class="add728Top">
+<div data-type="ad" data-publisher="concretepage.com" data-format="728x90" data-zone="zoneone"></div>
+</div>
+<div class="mobMenuTab"><a href="/all-tutorials"><img src="/images/menuTab.png" id="accordImg"></a></div>
+</div>
+</div>
+<div class="cl"></div>
+<div class="menuBox"><div id="topDropMenu" class="ddsmoothmenu"><ul>
+<li><a href="/">HOME</a></li><li><a href="/all-tutorials">ALL TUTORIALS</a></li><li><A href="/java/java-8/">JAVA 8</A></li><li>
+<a href="/spring-boot/">SPRING BOOT</a></li><li><a href="/angular/">ANGULAR</a></li><li><a href="/android">ANDROID</a></li>
+</ul></div></div> <div class="cl"></div>
+<div class="mainBlock">
+<div class="brdCrumb">
+<a href="/">Home</a>&nbsp;&nbsp;&gt&nbsp;&nbsp;<a href="/spring">Spring Core</a>
+</div>
+<div class="bodyPart">
+<div class="leftPart">
+<div class="leftLink">
+</div>
+</div>
+
+<div class="leftMidPart">
+
+<div class="text">
+<h1>Example of @PropertySource in Spring</h1>
+<div class="date"> <span class="authorName">By Arvind Rai, </span>
+<span class="createdDate">March 12, 2013</span></div>
+@PropertySource in spring can read the values from property file. @PropertySource is annotation based and we need to provide the config file path. With the help of <i>org.springframework.core.env.Environment </i>, the values is read. See below to use @PropertySource
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">@PropertySource("classpath:prop.cfg")
+public class Config {}
+
+ </pre>
+</div>
+@PropertySource is applied on class level. Find the complete example for @PropertySource in spring.
+<br /><br /><i>prop.cfg</i>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">prop.name=Ankita
+prop.age=18
+ </pre>
+</div>
+<div class="bottomAdd">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="c5a686033b2986df8537edd4-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7218400395368549" data-ad-slot="8141583713" data-ad-format="auto"></ins>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> <div class="cl"></div>
+</div>
+<br /><br /><i>Person.java</i>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">package com.concretepage;
+public class Person {
+	private String name;
+	private int age;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+}
+ </pre>
+</div>
+<br /><br /><i>Config.java</i>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">package com.concretepage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+
+@Configuration
+@PropertySource("classpath:prop.cfg")
+public class Config {
+	@Autowired
+    Environment env;
+	
+	@Bean
+    public Person person() {
+        Person person= new Person();
+        person.setName(env.getProperty("prop.name"));
+        person.setAge(Integer.parseInt(env.getProperty("prop.age"))); 
+        return person;
+    }
+}
+ </pre>
+</div>
+<br /><br /><i>PropertySourceTest.java</i>
+<div class="preBg">
+<span class="topLeft"></span><span class="topRight"></span><span class="bottomLeft"></span><span class="bottomRight"></span>
+<pre class="pre">package com.concretepage;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class PropertySourceTest {
+	public static void main(String[] args) {
+		  AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+		   
+	      ctx.register(Config.class);
+	      ctx.refresh();
+	
+	      Person person = ctx.getBean(Person.class);
+	      
+	      System.out.println(person.getName());
+	      System.out.println(person.getAge());
+	}
+}
+ </pre>
+</div>
+</div>
+<style>.fl{ float:left;}
+.sharebtn{ margin:0 10px 0 0px;}
+.shareButton{margin-top:15px;}
+</style>
+<div class="shareButton">
+<div class="cl"></div>
+</div>
+<div class='add_L_300x250 margin-left-240'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="c5a686033b2986df8537edd4-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="8716094511"></ins>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div> <div class="dimtext mobileDimtext">POSTED BY</div>
+<div class="profileBox">
+<div class="profileImg"><img src="/author/images/arvind-rai-profile.png" alt="ARVIND RAI" title="ARVIND RAI" /></div>
+<div class="profileText">
+<div style="display:block; margin-bottom:48px;"><div class="writerName fl">ARVIND RAI </div><div class="fl" style="margin-left:45px;"> <div class="we-are-social">
+<a href="https://twitter.com/concretepage" target="_blank" rel="nofollow"><img src="/images/twitter.png" border="0" /></a>
+<a href="https://www.facebook.com/concretepage" target="_blank" rel="nofollow"><img src="/images/facebook.png" border="0" /></a>
+</div> </div></div>
+<div class="writerLink cl">Popular Tutorials: <a href="/java/java-8/" alt="Java 8" title="Java 8">Java 8</a> | <a href="/spring-4/" alt="Spring 4" title="Spring 4">Spring 4</a> | <a href="/angular/" alt="Angular" title="Angular">Angular</a> | <a href="/struts-2/" alt="Struts 2" title="Struts 2">Struts 2</a> | <a href="/android/" alt="Android" title="Android">Android</a> </div>
+</div>
+</div>
+<div class="relatedLink"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="c5a686033b2986df8537edd4-text/javascript"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-7218400395368549" data-ad-slot="9316192911"></ins>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="dimtext">FIND MORE TUTORILAS</div>
+<div class="coreboxinternal">
+<a href="/spring-boot/"><span>Spring Boot</span></a>
+<a href="/hibernate/"><span>Hibernate</span></a>
+<a href="/jsf-2/primefaces-5/"><span>PrimeFaces</span></a>
+<a href="/webservices/resteasy-3/"><span>RESTEasy</span></a>
+<a href="/freemarker/"><span>FreeMarker</span></a>
+</div>
+<div class="cl"></div><style>
+ .wp-head .wp-leftrow table{display:none !important;}
+</style>
+<div id="wpac-comment" style="margin-bottom:50px;"></div>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 6134});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script> 
+</div>
+<div class="rightPartBlock">
+<div class="cl"></div>
+<div class="rightPart">
+<div class="rectanngle" style="text-align:center;"><br /><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="c5a686033b2986df8537edd4-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="7591257714"></ins>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><br /><div class="rectanngle" style="text-align:center;"><div data-type="ad" data-publisher="concretepage.com" data-zone="zonetwo" data-format="300x250"></div></div><br /><div class="rectanngle" style="text-align:center;"><div id="653169303">
+<script type="c5a686033b2986df8537edd4-text/javascript">
+	  try {
+		   window._mNHandle.queue.push(function () {
+		   	window._mNDetails.loadTag("653169303", "300x250", "653169303");
+		  	});
+		  }
+	  catch (error) {}
+	</script>
+</div></div>
+<div class="rightLink">
+<ul>
+<span>Latest Post</span><li>
+<a href="https://www.concretepage.com/spring-5/spring-bean-annotation">Spring @Bean Annotation</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/spring-boot/spring-boot-configurationproperties">Spring Boot @ConfigurationProperties Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/spring-5/spring-nested-configuration-classes">Spring Nested @Configuration Classes</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/spring-5/spring-configuration-annotation">Spring @Configuration Annotation</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/spring-5/spring-configuration-annotation">Java Clock offset()</a>
+</li> </ul>
+</div> <div class="rectanngle" style="text-align:center;"><div id="180507406">
+<script type="c5a686033b2986df8537edd4-text/javascript">
+	  try {
+		   window._mNHandle.queue.push(function () {
+		   	window._mNDetails.loadTag("180507406", "300x250", "180507406");
+		  	});
+		  }
+	  catch (error) {}
+	</script>
+</div></div> <div class="rightLink">
+<ul>
+<span>Top Trends</span>
+</ul>
+<li>
+<a href="/angular-2/angular-2-radio-button-and-checkbox-example">Angular 2 Radio Button and Checkbox Example </a>
+</li>
+<li>
+<a href="/angular-2/angular-2-http-post-example">Angular 2 Http post() Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/java/jdk-8/java-8-stream-sorted-example">Java 8 Stream sorted() Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-4-pattern-validation-example">Angular 2/4 Pattern Validation Example</a>
+</li>
+<li>
+<a href="/angular-2/angular-2-4-minlength-and-maxlength-validation-example">Angular 2/4 minlength and maxlength Validation Example</a>
+</li>
+</div>
+<div class="rectanngle" style="text-align:center;"><div data-type="ad" data-publisher="concretepage.com" data-zone="zonethree" data-format="300x250"></div></div> <div class="rightLink">
+<ul>
+<span>Popular Post</span>
+</ul>
+<li>
+<a href="/angular/angular-httpclient-post">Angular HttpClient post</a>
+</li>
+<li>
+<a href="/spring-boot/spring-boot-crudrepository-example">Spring Boot CrudRepository Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/angular-2/angular-2-select-option-multiple-select-option-validation-example-using-template-driven-form">Angular 2 Select Option + Multiple Select Option + Validation Example using Template-Driven Form</a>
+</li>
+<li>
+<a href="/angular-2/angular-2-date-pipe-example">Angular 2 Date Pipe Example</a>
+</li>
+<li>
+<a href="/spring-5/spring-data-crudrepository-example">Spring Data CrudRepository Example</a>
+</li>
+</div> <div class="cl"></div>
+<div class="rectanngle" style="text-align:center;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="c5a686033b2986df8537edd4-text/javascript"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7218400395368549" data-ad-slot="9207591713"></ins>
+<script type="c5a686033b2986df8537edd4-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div> <div class="rightLink">
+<ul>
+<span>Featured Post</span>
+</ul>
+<li>
+<a href="/java/jdk-8/java-8-stream-allmatch-anymatch-nonematch-example">Java 8 Stream: allMatch, anyMatch and noneMatch Example </a>
+</li>
+<li>
+<a href="/angular-2/angular-2-decimal-pipe-percent-pipe-and-currency-pipe-example">Angular 2 Decimal Pipe, Percent Pipe and Currency Pipe Example</a>
+</li>
+<li>
+<a href="/angular-2/angular-2-4-onchanges-simplechanges-example">Angular 2/4 OnChanges + SimpleChanges Example</a>
+</li>
+<li>
+<a href="/angular-2/angular-2-ngif-example">Angular 2 NgIf Example</a>
+</li>
+<li>
+<a href="https://www.concretepage.com/jackson-api/jackson-ignore-null-and-empty-fields">Jackson Ignore Null and Empty Fields</a>
+</li>
+</div>
+</div>
+<div class="cl"></div>
+<div style="text-align:center; width:160px; margin: 0 auto;">
+<div data-type="ad" data-publisher="concretepage.com" data-zone="zoneeight" data-format="160x600"></div>
+</div>
+</div>
+</div>
+</div><div class="cl"></div>
+<br /><br />
+<div class="backlink">
+<div class="backlinkBlock">
+<ul style="margin:0 100px;">
+<div style="line-height:25px; color:#FFFFFF;"><h5>About Us</h5>
+We are a group of software developers. <br /> We enjoy learning and sharing technologies.<br /> To improve the site's content, <br />your valuable suggestions <br />are most welcome. <span style="color:#B02B1A; font-style:italic;">Thanks</span><br />
+Email : <b style="color:yellowgreen;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2645494845544352435647414366414b474f4a0845494b">[email&#160;protected]</a></b>
+<br /><br /><div class="we-are-social">
+<a href="https://twitter.com/concretepage" target="_blank" rel="nofollow"><img src="/images/twitter.png" border="0" /></a>
+<a href="https://www.facebook.com/concretepage" target="_blank" rel="nofollow"><img src="/images/facebook.png" border="0" /></a>
+</div> </div>
+</ul>
+<ul style="color:#FFFFFF;">
+<h5>Mobile Apps</h5>
+<br />SCJP Quiz<br /><br />
+<a href="https://play.google.com/store/apps/details?id=com.concretepage.javaquiz" target="_blank" rel="nofollow"><img alt="Get it on Google Play" src="/images/google-play.jpg" /></a>
+<br /><br />ConcretePage.com<br /><br />
+<a href="https://play.google.com/store/apps/details?id=com.concretepage.app" target="_blank" rel="nofollow"><img alt="Get it on Google Play" src="/images/google-play.jpg" /></a>
+</ul>
+</div>
+</div>
+<div class="cl"></div>
+<div class="footerBlock">
+<div class="footerArea">
+<p style="padding:8px 5px 0;"><span class="fl">&copy;2019 concretepage.com | </span><span class="fl" style="padding:0 0 0 3px;"><a href="/privacy-policy">Privacy Policy</a> | </span><span class="fl" style="padding:0 0 0 3px;"><a href="/contact-us">Contact Us</a></span></p>
+<span class="fr" style="padding:8px 5px 0 0;"></span>
+</div>
+</div>
+<div class="cl"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="c5a686033b2986df8537edd4-text/javascript">
+function _dmBootstrap(file) { 
+	var _dma = document.createElement('script');  
+	_dma.type = 'text/javascript'; 
+	_dma.async = true;  
+	_dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file; 
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined')  _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js');}
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000);})();
+</script> <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="c5a686033b2986df8537edd4-|49" defer=""></script></body> </html>

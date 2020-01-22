@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+  <head>
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138181587-2"></script>
+          <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-138181587-2');
+          </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Both findById() and getOne() methods are used to retrieve an object from underlying datastore. The underlying mechanism for retrieving records is different for both these methods, which affects the performance of given program.">
+      <meta name="author" content="Carvia Tech">
+<meta name="_csrf_parameter" content="_csrf" /><meta name="_csrf_header" content="X-CSRF-TOKEN" /><meta name="_csrf" content="2eba14d1-7905-42c4-a745-62599212f5fb" />      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/favicon.ico" type="image/x-icon">
+      <link rel="canonical" href="https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff"/>
+
+      <title>Difference between getOne and findById in Spring Data JPA?</title>
+
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+      <!-- Bootstrap Core CSS -->
+      <link href="/css/bootstrap.min-9789b96f44004a593f70a170ff563e16.css" rel="stylesheet">
+      <link href="/css/jumbotron-0ef7edc6babea5a47645bda0c45368aa.css" rel="stylesheet">
+      <link href="/css/blog-home-ade407501ff5c1ab784618eb657e923e.css" rel="stylesheet">
+      <link href="/css/asciidoctor-custom-72ee2fb2e0424bba9d48534f9144e7d1.css" rel="stylesheet">
+<link href="/css/cookie-bar-style-da77a131b3831e3c347356792e63eb6f.css" rel="stylesheet">
+<link href="/font-awesome/css/font-awesome.min-269550530cc127b6aa5a35925a7de6ce.css" rel="stylesheet">
+
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <meta property="og:url" content="https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff"/>
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Difference between getOne and findById in Spring Data JPA?"/>
+      <meta property="og:description" content="Both findById() and getOne() methods are used to retrieve an object from underlying datastore. The underlying mechanism for retrieving records is different for both these methods, which affects the performance of given program."/>
+          <meta property="og:image" content="https://s3.shunyafoundation.com/s3/65992c46d6a9e807e96f698b0e460f31d02d3b38/getone_findbyid_spring_jpa-2x.png"/>
+
+      <script src="/4de4gd/js/jquery.min.js"></script>
+
+       <link href="/css/styles/xcode-ed99a3ac6aad0509c8425eecc7710950.css" rel="stylesheet">
+
+      <script type="application/ld+json">
+      {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Difference between getOne and findById in Spring Data JPA?",
+          "image": "https://s3.shunyafoundation.com/s3/65992c46d6a9e807e96f698b0e460f31d02d3b38/getone_findbyid_spring_jpa-2x.png",
+          "keywords": "spring-data-jpa, hibernate, jpa, findbyId, getone, Spring data, interview questions",
+          "publisher": {
+                "@type": "Organization",
+                "name": "Carvia Tech"
+          },
+          "url": "https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff",
+          "datePublished": "2018-04-04",
+          "dateCreated": "2018-04-04",
+          "dateModified": "2019-05-05",
+          "description": "Both findById() and getOne() methods are used to retrieve an object from underlying datastore. The underlying mechanism for retrieving records is different for both these methods, which affects the performance of given program.",
+          "articleBody": "Both findById() and getOne() methods are used to retrieve an object from underlying datastore. The underlying mechanism for retrieving records is different for both these methods, which affects the performance of given program.",
+          "author": {
+              "@type": "Person",
+              "name": "Carvia Tech"
+          }
+      }
+      </script>
+
+      <script type="text/javascript">
+          $(function () {
+              var token = $("meta[name='_csrf']").attr("content");
+              var header = $("meta[name='_csrf_header']").attr("content");
+              $(document).ajaxSend(function (e, xhr, options) {
+                  xhr.setRequestHeader(header, token);
+              });
+          });
+
+          var scrollToElement = function (el, ms) {
+              var speed = (ms) ? ms : 1500;
+              $('html,body').animate({
+                  scrollTop: $(el).offset().top
+              }, speed);
+          };
+
+          var useAjaxBusyWait = function () {
+              $(document).ready(function () {
+                  $('body').append('<div id="ajaxBusy"><p id="ajaxBusyMsg">Please wait...</p></div>');
+                  // AJAX activity indicator bound to ajax start/stop document events
+                  $(document).ajaxStart(function () {
+                      $('#ajaxBusy').show();
+                  }).ajaxStop(function () {
+                      $('#ajaxBusy').hide();
+                  });
+              });
+          };
+      </script>
+
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8459438937301460",
+              enable_page_level_ads: true
+          });
+      </script>
+
+      <style>
+        h1, .h1 {
+          font-size: 2.0rem;
+        }
+      </style>
+  </head>
+
+  <body>
+
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=164929987592562';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+    <div class="container">
+    <a class="navbar-brand" href="/"><i class="fa fa-home" aria-hidden="true"></i> JavaCodeMonk</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ml-5" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li id="explore_id" class="nav-item">
+                <a class="nav-link" href="/explore"><i class="fa fa-list" aria-hidden="true"></i> Categories</a>
+            </li>
+            <li id="bookshelf_id" class="nav-item">
+                <a class="nav-link" href="/book-shelf"><i class="fa fa-book" aria-hidden="true"></i> Book Shelf</a>
+            </li>
+
+
+
+            <li id="login_id" class="nav-item">
+                <a class="nav-link" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
+            </li>
+
+        </ul>
+
+
+        <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+            <input class="form-control mr-sm-1" type="text" value="" name="q" placeholder="Search for ..." required>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+
+    </div>
+    </div>
+</nav>
+
+<script>
+    $('#home_id').addClass('active');
+</script>
+
+    <main role="main">
+        <!-- Page Content -->
+        <div class="container mt-3">
+
+            <div class="row">
+                <!-- Post Content Column -->
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb small">
+                            <li class="breadcrumb-item"><a href="/explore">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/category/java-interviews">Java Interviews</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">  Difference between getOne and findById in Spring Data JPA?..</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Title -->
+                    <h1 class="mt-3">Difference between getOne and findById in Spring Data JPA?</h1>
+
+                    <p class="lead small">
+                        <span class="mr-2"><i class="fa fa-address-card-o" aria-hidden="true"></i> Carvia Tech</span> |
+                        <span class="text-muted1 ml-2 mr-2"><i class="fa fa-calendar" aria-hidden="true"></i> May 05, 2019</span> |
+                        <span class="text-muted1 ml-2 mr-2"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 min read</span> |
+                        <span class="text-muted1 ml-2 mr-2"><i class="fa fa-eye" aria-hidden="true"></i> 925 views</span>
+                        | <span class="ml-2 mr-2">
+                            <i class="fa fa-tags" aria-hidden="true"></i>
+                            <a href="/tag/spring-boot"><span class="badge badge-primary"> spring-boot </span></a>
+                        </span>
+                    </p>
+
+                    <hr />
+
+
+                    <!-- Post Content -->
+                    <div class="customCss">
+                        <div class="quoteblock abstract">
+<blockquote>
+Both <code>findById()</code> and <code>getOne()</code> methods are used to retrieve an object from underlying datastore. But the underlying mechanism for retrieving records is different for both these methods, infact getOne() is lazy operation which does not even hit the database.
+</blockquote>
+</div>
+<div class="sect1">
+<h2 id="_getone_method">getOne() method</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>getOne() returns a reference to the entity with the given identifier.
+getOne internally invokes EntityManager.getReference() method. As per docs, this method will always return a proxy without hitting the database (lazily fetched). This method will throw EntityNotFoundException at the time of actual access if the requested entity does not exist in the database.</p>
+</div>
+<div class="exampleblock">
+<div class="title">EntityManager.getReference(Class, Object) Docs</div>
+<div class="content">
+<div class="paragraph">
+<p>Get an instance, whose state may be lazily fetched. If the requested instance does not exist in the database, the EntityNotFoundException is thrown when the instance state is first accessed. (The persistence provider runtime is permitted to throw the EntityNotFoundException when getReference is called.) The application should not expect that the instance state will be available upon detachment, unless it was accessed by the application while the entity manager was open.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_findbyid_method">findById() method</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This method will actually hit the database and return the real object mapping to a row in the database. It is EAGER loaded operation that returns null if no record exists in database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_which_one_to_choose">Which one to choose?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The only real difference between these methods is about the performance. Lazily loaded getOne() method avoids database roundtrip from the JVM as it never hits the database until the properties of returned proxy object are actually accessed.</p>
+</div>
+<div class="paragraph">
+<p>There are scenarios when you just want to get retrieve an entity from database and assign it as a reference to another object, just to maintain the relationship (OneToOne or ManyToOne). Lets take a concrete example:</p>
+</div>
+<div class="paragraph">
+<p>We have a Employee that belong to Department.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Entity
+@Table(name = "t_departments")
+public class Department {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
+    private String name;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Entity
+@Table(name = "t_employees")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+
+    @ManyToOne  <i class="conum" data-value="1"></i><b>(1)</b>
+    private Department department;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Employee object needs a reference of Department.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now lets consider the following code where we want to create a new employee and assign it to a department.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public class HRService {
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public Department createDepartment() {
+        Department dept = new Department();
+        dept.setName("Product &amp; Engg");
+        return departmentRepository.save(dept);
+    }
+
+    public void createEmployee1(long deptId) {
+        final Department pne = departmentRepository.getOne(deptId); <i class="conum" data-value="1"></i><b>(1)</b>
+        Employee employee = new Employee();
+        employee.setName("Foo 1");
+        employee.setDepartment(pne);
+        employeeRepository.save(employee);
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We are retrieving a reference of Department object and assigning it to employee. Using <code>getOne()</code> is better than using <code>findById()</code> in this particular case, because we need not to fetch the details of department object.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">generated SQL traces</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="sql" class="language-sql hljs">insert into t_employees (department_id, name, id) values (?, ?, ?)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When we use <code>findById()</code> instead of <code>getOne()</code>, then an additional call to database is made to retrieve the department object, as shown in the below code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">    public void createEmployee2(long deptId) {
+        Optional&lt;Department&gt; pne = departmentRepository.findById(deptId);
+        Employee employee = new Employee();
+        employee.setName("Foo 1");
+        pne.ifPresent(department -&gt; {
+            employee.setDepartment(department);
+        });
+        employeeRepository.save(employee);
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">generated SQL traces</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="sql" class="language-sql hljs">select department0_.id as id1_4_0_, department0_.name as name2_4_0_ from t_departments department0_ where department0_.id=? <i class="conum" data-value="1"></i><b>(1)</b>
+insert into t_employees (department_id, name, id) values (?, ?, ?)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We can see here that an additional call to database is made to eagerly fetch the department record, and then assign it as a refernce in employee record.</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Comparison Summary</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">getOne()</th>
+<th class="tableblock halign-left valign-top">findById()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lazily loaded reference to target entity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actually loads the entity for the given id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Useful only when access to properties of object is not required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object is eagerly loaded so all attributes can be accessed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throws EntityNotFoundException if actual object does not exist at the time of access invocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns null if actual object corresponding to given Id does not exist</p></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Better performance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An additional round-trip to database is required</p></td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+                    </div>
+
+
+                        <hr class="hr-line-dashed">
+
+                        <h6 class="text-muted">Top articles in this category:</h6>
+                        <ol>
+                                <li><a href="/post/168/cracking-core-java-interviews-question-bank">Cracking core java interviews - question bank</a></li>
+                                <li><a href="/post/4/top-50-multi-threading-java-interview-questions-for-investment-bank">Top 50 Multi-threading Java Interview Questions for Investment Bank</a></li>
+                                <li><a href="/post/7/blackrock-technical-java-interview-questions">BlackRock Top Java Interview Questions: Investment Banking Domain </a></li>
+                                <li><a href="/post/10/citibank-java-developer-interview-questions">Citibank Java developer interview questions</a></li>
+                                <li><a href="/post/209/top-20-java-concurrency-interview-questions-and-answers">Top 20 Java Concurrency Interview Questions and Answers</a></li>
+                                <li><a href="/post/9/rbs-java-interview-questions">RBS Java Interview Questions </a></li>
+                                <li><a href="/post/20/ubs-investment-banking-top-java-interview-questions">UBS Top 10 Java Interview Questions</a></li>
+                        </ol>
+
+                    <hr class="hr-line-dashed">
+
+                    <div class="text-left">
+                        <h6 class="text-muted mb-3">Share article:</h6>
+                        <a class="btn btn-sm btn-outline-info" href="https://www.facebook.com/sharer/sharer.php?u=https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff" target="_blank">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook
+                        </a>
+                        <a class="btn btn-sm btn-outline-info" href="https://twitter.com/intent/tweet?text=https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff" target="_blank">
+                            <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
+                        </a>
+                        <a class="btn btn-sm btn-outline-info" href="https://www.linkedin.com/cws/share?url=https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff&title=Difference between getOne and findById in Spring Data JPA?" target="_blank">
+                            <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+                        </a>
+                    </div>
+
+                    <br/>
+
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                        var disqus_config = function () {
+                            this.page.url = 'https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff';  // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier = '3a96c3ff'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://javacodemonk.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                    <br>
+
+
+                    <h6 class="text-muted">Find more on this topic:</h6>
+
+                    <div class="card mb-3 shadow-sm h-md-250" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://s3.shunyafoundation.com/s3/6577929ceea31778927b79e94a1bfe1b13b11656/java.jpg" class="card-img" alt="Java Interviews image">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="/category/java-interviews" class="card-link">Java Interviews</a></h5>
+                                    <p class="card-text">Interview - Product Companies, eCommerce Companies, Investment Banking, Healthcare Industry, Service Companies and Startups.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 1 month ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                        <h6 class="text-muted">Recommended books for interview preparation:</h6>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    You may also be interested in..
+                </div>
+                <div class="card-body">
+                    <div class="media">
+                        <a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank">
+                            <img class="mr-3 img-responsive" style="max-height: 170px;" src="https://books.shunyafoundation.com/attachment/1a7mak63mrkv60c6/spring-microservices-interviews-small.jpg" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="card-title mt-0"><a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank">        ebook PDF - Cracking Spring Microservices Interviews for Java Developers</a></h5>
+                            <nav>
+                                <a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank" class="btn btn-primary">Buy for Rs. 199</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    You may also be interested in..
+                </div>
+                <div class="card-body">
+                    <div class="media">
+                        <a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank">
+                            <img class="mr-3 img-responsive" style="max-height: 170px;" src="https://s3.shunyafoundation.com/s3/5d72600aedda418ad475743183fb3b8e08dc6c79/ccji-front-cover.png" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="card-title mt-0"><a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank">                     ebook PDF - Cracking Java Interviews v3.5 by Munish Chandel</a></h5>
+                            <nav>
+                                <a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank" class="btn btn-primary">Buy for Rs. 250</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                    <!-- Comments Form -->
+
+                    <!-- Single Comment -->
+
+                    <!-- Comment with nested comments -->
+
+                </div>
+
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-4">
+
+    <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        You may also be interested in..
+                    </div>
+                    <div class="card-body">
+                        <div class="media">
+                            <a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank">
+                                <img class="mr-3 img-responsive" style="max-height: 170px;" src="https://books.shunyafoundation.com/attachment/1a7mak63mrkv60c6/spring-microservices-interviews-small.jpg" alt="Generic placeholder image">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="card-title mt-0"><a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank">        ebook PDF - Cracking Spring Microservices Interviews for Java Developers</a></h5>
+                                <nav>
+                                    <a href="https://books.shunyafoundation.com/to/VWVTPZ3A?affid=javablog" target="_blank" class="btn btn-primary">Buy for Rs. 199</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        You may also be interested in..
+                    </div>
+                    <div class="card-body">
+                        <div class="media">
+                            <a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank">
+                                <img class="mr-3 img-responsive" style="max-height: 170px;" src="https://s3.shunyafoundation.com/s3/5d72600aedda418ad475743183fb3b8e08dc6c79/ccji-front-cover.png" alt="Generic placeholder image">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="card-title mt-0"><a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank">                     ebook PDF - Cracking Java Interviews v3.5 by Munish Chandel</a></h5>
+                                <nav>
+                                    <a href="https://books.shunyafoundation.com/to/sku2?affid=javablog" target="_blank" class="btn btn-primary">Buy for Rs. 250</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="card my-0">
+                        <h5 class="card-header">Facebook Page</h5>
+<div class="fb-like my-2" data-href="https://www.javacodemonk.com" data-width="200" data-layout="standard" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
+                    </div>
+
+                    <!-- Categories Widget -->
+
+                    <!-- Side Widget -->
+                        <div class="card my-4">
+                            <h5 class="card-header">Similar Posts</h5>
+    <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/inter-thread-communication-in-java-f10d1540">
+                        <span class="small">Inter-thread communication in Java</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/what-are-different-thread-states-in-java-d4ad5003">
+                        <span class="small">What are different thread states in Java</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/static-method-synchronization-aka-class-lock-in-java-1691e0d8">
+                        <span class="small">Static method synchronization aka Class Lock in Java</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/what-is-difference-between-http-redirect-and-forward-a0dc2e6f">
+                        <span class="small">What is difference between HTTP Redirect and Forward</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/top-20-java-concurrency-interview-questions-and-answers-0c48dd46">
+                        <span class="small">Top 20 Java Concurrency Interview Questions and Answers</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/what-is-single-abstract-method-sam-and-functional-interface-in-java-44f22fc3">
+                        <span class="small">What is Single Abstract Method (SAM) and Functional Interface in Java</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/difference-between-method-overloading-and-overriding-5f0dc23c">
+                        <span class="small">Difference between method overloading and overriding</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/method-overloading-rules-in-java-fda9adba">
+                        <span class="small">Method overloading rules in Java</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/tcs-microservices-interview-questions-for-java-developers-d9d2af01">
+                        <span class="small">TCS - Microservices Interview Questions for Java Developers</span>
+                    </a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/sql-to-find-employee-details-with-nth-highest-salary-bce5a34e">
+                        <span class="small">SQL to find employee details with nth highest salary</span>
+                    </a>
+                </li>
+    </ul>
+                        </div>
+
+   <div class="card bg-light mb-3 w-100">
+       <div class="card-header">Free Email Updates</div>
+       <div class="card-body">
+           <p class="card-text">Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+           <form action="/subscribe/apply" method="post">
+               <div class="form-group">
+                   <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address" >
+               </div>
+               <div class="form-group row">
+                   <div class="col-sm-10">
+                       <button type="submit" class="btn btn-primary">Subscribe</button>
+                   </div>
+               </div>
+<input type="hidden" name="_csrf" value="2eba14d1-7905-42c4-a745-62599212f5fb" />           </form>
+       </div>
+   </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <hr>
+<!-- Cookies -->
+<input type="checkbox" id="cookies-close">
+<label for="cookies-close" class="cookies-close">Got it!</label>
+<div id="cookies" class="cookies">
+    <p class="cookies-message">This website uses cookies to ensure you get the best experience on our website.  <a href="#" class="cookies-message-link">more info</a></p>
+</div>
+<!-- End Cookies -->
+
+<!-- Footer -->
+<footer class="py-3 bg-primary1 footer">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 offset-md-1 col-sm-12">
+                <ul class="text-left mb-0">
+                    <li><a href="#">Be a Contributor</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/about-us">About us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 offset-md-3 col-sm-12">
+                <p class="text-center">Find us on social media.</p>
+                <ul class="list-inline text-center list-social-icons mb-0">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/crackingjavainterviews/" target="_blank" rel="nofollow">
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright text-center">Copyright &copy; www.javacodemonk.com 2018-19</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script src="/4de4gd/js/jquery.min.js"></script>
+<script src="/4de4gd/js/js.cookie.js"></script>
+<script>
+    $(document).ready(function() {
+        if (document.cookie.indexOf('ShunyaPlatform') == -1) {
+            $('#cookies').addClass("cookies-show");
+            $('.cookies-close').addClass("show-close-cookies");
+        } else {
+
+        }
+    });
+
+    $('#cookies-close').click(function (e) {
+        var number = Math.random();
+        var id = number.toString(36).substr(2, 9); // 'xtis06h6'
+        Cookies.set('ShunyaPlatform', id);
+        $('#cookies').removeClass("cookies-show").addClass("cookies-hide");
+        $('.cookies-close').removeClass("show-close-cookies").addClass("hide-close-cookies");
+    });
+</script>
+
+        </div>
+        <!-- /.container -->
+
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/4de4gd/js/popper.min.js"></script>
+  <script src="/4de4gd/js/bootstrap.min.js"></script>
+  <script src="/4de4gd/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script type="text/javascript">
+      $(".js-social-share").click(function(e) {
+          e.preventDefault();
+
+          windowPopup($(this).attr("href")+window.location.href, 500, 300);
+      });
+
+      function windowPopup(url, width, height) {
+          // Calculate the position of the popup so
+          // it’s centered on the screen.
+          var left = (screen.width / 2) - (width / 2),
+                  top = (screen.height / 2) - (height / 2);
+
+          window.open(
+                  url,
+                  "",
+                  "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left
+          );
+      }
+  </script>
+  <script id="dsq-count-scr" src="//javacodemonk.disqus.com/count.js" async></script>
+
+  </body>
+</html>

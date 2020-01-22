@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en-US" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="pingback" href="https://www.baeldung.com/xmlrpc.php">
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/manifest.json">
+<link rel="mask-icon" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/safari-pinned-tab.svg" color="#63b175">
+<link rel="shortcut icon" href="https://www.baeldung.com/wp-content/themes/baeldung/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="https://www.baeldung.com/wp-content/themes/baeldung/favicon/mstile-144x144.png">
+<meta name="msapplication-config" content="https://www.baeldung.com/wp-content/themes/baeldung/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<link type="text/css" media="all" href="https://www.baeldung.com/wp-content/cache/autoptimize/css/autoptimize_4ac62ee56f105015afaa8a9d073f86c2.css" rel="stylesheet" /><title>Using Spring ResponseEntity to Manipulate the HTTP Response | Baeldung</title>
+
+<meta name="description" content="Learn how to manipulate the HTTP response using the ResponseEntity class." />
+<meta name="keywords" content="spring mvc basics" />
+<link rel="canonical" href="https://www.baeldung.com/spring-response-entity" />
+<meta property="og:title" content="Using Spring ResponseEntity to Manipulate the HTTP Response | Baeldung" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.baeldung.com/spring-response-entity" />
+<meta property="og:image" content="https://www.baeldung.com/wp-content/uploads/2016/10/social-Spring-On-Baeldung-3.jpg" />
+<meta property="og:site_name" content="Baeldung" />
+<meta property="og:description" content="Learn how to manipulate the HTTP response using the ResponseEntity class." />
+<meta property="article:published_time" content="2018-07-03T19:50:58Z" />
+<meta property="article:modified_time" content="2019-04-07T16:04:35Z" />
+<meta property="og:image:secure_url" content="https://www.baeldung.com/wp-content/uploads/2016/10/social-Spring-On-Baeldung-3.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@baeldung" />
+<meta name="twitter:domain" content="www.baeldung.com" />
+<meta name="twitter:title" content="Using Spring ResponseEntity to Manipulate the HTTP Response | Baeldung" />
+<meta name="twitter:description" content="Learn how to manipulate the HTTP response using the ResponseEntity class." />
+<meta name="twitter:image" content="https://www.baeldung.com/wp-content/uploads/2016/10/social-Spring-On-Baeldung-3.jpg" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.baeldung.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<style>
+        .wi_webinar_widget {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            /*border: 1px solid rgba(0,0,0,0.1);*/
+            /*border-bottom: 2px solid rgba(0,0,0,0.2);*/
+            /*padding: 10px;*/
+            margin: 15px 10px;
+
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300;
+        }
+
+        .webinar_title {
+            text-align: center;
+            font-size: 24px;
+            line-height: 36px;
+            padding: 20px;
+            border-bottom: 1px solid #DDD;
+            color: #222222;
+        }
+
+        .wi_webinar_date {
+            background-color: #C95456;
+            color: #FFF;
+            /*font-weight: bold;*/
+            text-align: center;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-top: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .wi_webinar_sign_up {
+            text-align: center;
+            background-color: #F7F7F7;
+            padding: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            color: #222222;
+        }
+
+        .wi_webinar_headline1 {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .wi_webinar_headline2 {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .wi_signup_btn {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            width: 100% !important;
+            background-color: #55B369 !important;
+            display: block !important;
+            margin-top: 10px !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            padding: 10px !important;
+            border-radius: 5px !important;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important;
+            text-decoration: none !important;
+            color: #FFF !important;
+            height: 46px !important;
+            line-height: 23px !important;
+        }
+
+        .wi_signup_btn:hover {
+            text-decoration: none !important;
+            color: #FFF !important;
+            background-color: #4ba05e !important;
+        }
+
+        .wi_webinar_input {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            height: 46px;
+            line-height: 46px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .wi_webinar_spam {
+            border-top: 1px solid #DDD;
+            padding-top: 15px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-size: 10px;
+            color: #757575;
+        }
+    </style>
+<link rel='stylesheet' id='source-code-pro-css' href='https://fonts.googleapis.com/css?family=Source+Code+Pro%3A300&#038;ver=5.2.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var getTemplateUrl = {"templateUrl":"https:\/\/www.baeldung.com\/wp-content\/themes\/baeldung"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.baeldung.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.baeldung.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ajax_object = {"ajax_url":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php"};
+var bigmenu_settings = {"loading_delay":"4000","referral_id":"36022","version":"1.7.7"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var aamLocal = {"nonce":"30b841124e","ajaxurl":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<link rel='https://api.w.org/' href='https://www.baeldung.com/wp-json/' />
+<link rel='shortlink' href='https://www.baeldung.com/?p=36022' />
+<link rel="alternate" type="application/json+oembed" href="https://www.baeldung.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.baeldung.com%2Fspring-response-entity" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.baeldung.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.baeldung.com%2Fspring-response-entity&#038;format=xml" />
+<style type="text/css">#tve_editor .ttfm6{font-family: 'Raleway' !important;font-weight: 300 !important;}.ttfm6 input, .ttfm6 select, .ttfm6 textarea, .ttfm6 button {font-family: 'Raleway' !important;font-weight: 300 !important;}#tve_editor .ttfm6.bold_text,.ttfm6 .bold_text,.ttfm6 b,.ttfm6 strong{font-weight: 700 !important;}.ttfm6.bold_text,.ttfm6 .bold_text,.ttfm6 b,.ttfm6 strong input, .ttfm6.bold_text,.ttfm6 .bold_text,.ttfm6 b,.ttfm6 strong select, .ttfm6.bold_text,.ttfm6 .bold_text,.ttfm6 b,.ttfm6 strong textarea, .ttfm6.bold_text,.ttfm6 .bold_text,.ttfm6 b,.ttfm6 strong button {font-weight: 700 !important;}#tve_editor .ttfm7{font-family: 'Raleway' !important;font-weight: 600 !important;}.ttfm7 input, .ttfm7 select, .ttfm7 textarea, .ttfm7 button {font-family: 'Raleway' !important;font-weight: 600 !important;}#tve_editor .ttfm7.bold_text,.ttfm7 .bold_text,.ttfm7 b,.ttfm7 strong{font-weight: 700 !important;}.ttfm7.bold_text,.ttfm7 .bold_text,.ttfm7 b,.ttfm7 strong input, .ttfm7.bold_text,.ttfm7 .bold_text,.ttfm7 b,.ttfm7 strong select, .ttfm7.bold_text,.ttfm7 .bold_text,.ttfm7 b,.ttfm7 strong textarea, .ttfm7.bold_text,.ttfm7 .bold_text,.ttfm7 b,.ttfm7 strong button {font-weight: 700 !important;}</style><style type="text/css" id="tve_global_variables">:root{--tcb-color-0:rgb(51, 51, 51);}</style>
+
+<style type='text/css'>
+.syntaxhighlighter { line-height: 1.2em }
+.syntaxhighlighter,
+.syntaxhighlighter a,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter table,
+.syntaxhighlighter table td,
+.syntaxhighlighter table tr,
+.syntaxhighlighter table tbody,
+.syntaxhighlighter table thead,
+.syntaxhighlighter table caption,
+.syntaxhighlighter textarea {
+font-size: 12px !important; /* Set the font size in pixels */  
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important; /* Set the font type */  
+}
+.syntaxhighlighter table caption {
+/* For Title(Caption) */  
+font-size: 14px !important; /* Set the font size in pixels */  
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important; /* Set the font type */  
+}
+.syntaxhighlighter.nogutter td.code .line {
+/* Set the left padding space when no-gutter in ver. 3.0 */  
+padding-left: 3px !important;
+}
+.syntaxhighlighter {
+/* For Chrome/Safari(WebKit) */  
+/* Hide the superfluous vertical scrollbar in ver. 3.0 */  
+overflow-y: hidden !important;
+padding: 1px !important;
+}
+.widget-area.syntaxhighlighter a,
+.widget-area.syntaxhighlighter div,
+.widget-area.syntaxhighlighter code,
+.widget-area.syntaxhighlighter table,
+.widget-area.syntaxhighlighter table td,
+.widget-area.syntaxhighlighter table tr,
+.widget-area.syntaxhighlighter table tbody,
+.widget-area.syntaxhighlighter table thead,
+.widget-area.syntaxhighlighter table caption,
+.widget-area.syntaxhighlighter textarea {
+/* For Widget */  
+font-size: 14px !important; /* Set the font size in pixels */  
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important; /* Set the font type */  
+}
+.widget-area table caption {
+/* For Widget */  
+/* For Title(Caption) */  
+font-size: 10px !important; /* Set the font size in pixels */  
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important; /* Set the font type */  
+}
+</style>
+
+
+<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
+<script type="text/javascript">
+		/* <![CDATA[ */
+			jQuery(document).ready(function() {
+				jQuery('.car-collapse').find('.car-monthlisting').hide();
+				jQuery('.car-collapse').find('.car-monthlisting:first').show();
+				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
+					jQuery(this).next('ul').slideToggle('fast');
+				});
+				jQuery('.car-collapse').find('.car-toggler').click(function() {
+					if ( 'Expand All' == jQuery(this).text() ) {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
+						jQuery(this).text('Collapse All');
+					}
+					else {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
+						jQuery(this).text('Expand All');
+					}
+					return false;
+				});
+			});
+		/* ]]> */
+	</script>
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700" rel="stylesheet">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-26064837-1', 'auto');
+  ga('send', 'pageview');
+  setTimeout("ga('send', 'event', 'Time on page', 'more than 2.5 minutes')", 150000);
+  
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '512471148948613');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=512471148948613&ev=PageView&noscript=1"
+/></noscript>
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/7114245/sidebar', [300, 250], 'div-gpt-ad-1520340060562-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script> </head>
+<body class="post-template-default single single-post postid-36022 single-format-standard">
+
+<script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+<div id="wrap">
+<nav class="header--menu">
+<div class="container">
+<div class="container-inner">
+<a class="nav--logo_mobile" href="/" title="Baeldung">
+<img alt="The Baeldung logo" src="https://www.baeldung.com/wp-content/themes/baeldung/icon/logo.svg">
+</a>
+<a href="#" class="menu-mobile" title="Navigation" onclick="veggieBurger.reset().play();">
+<svg version="1.1" id="veggieBurger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35;" xml:space="preserve">
+<line style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:10;" x1="2.5" y1="17.5" x2="32.5" y2="17.5" />
+<line style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:10;" x1="2.5" y1="6.5" x2="32.5" y2="6.5" />
+<line style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:10;" x1="2.5" y1="28.5" x2="32.5" y2="28.5" />
+</svg>
+</a>
+</div>
+</div>
+<div class="container menu-container">
+<div class="container-inner">
+<ul id="menu-main-menu" class="nav--menu"><li class="big-nav-icon nav--menu_item">
+<a class="nav--menu_item_anchor menu-not-loaded" href="#" onclick="javascript:ga('send', 'event', 'menu', 'click', 'new_menu_open');">
+<svg id="BigNavIcon" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#menu-icon"></svg>
+</a><li class="nav--logo"><a href="/" title="Baeldung"><img src="https://www.baeldung.com/wp-content/themes/baeldung/icon/logo.svg"></a><li class="nav--menu_item  menu-start-here"><a class="nav--menu_item_anchor" href="/start-here">Start Here</a><li class="nav--menu_item nav--menu_item_darkened nav--menu_has_3_children menu-courses"><a id="menu-item-17021" class="nav--menu_item_anchor nav--menu_item_withDropdown" href="javascript:void(0)">Courses&nbsp;<span class="menu--item_normal">▼</span><span class="menu--item_active">▲</span></a>
+<div class="nav--dropdown">
+<ul class="nav--dropdown_content">
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/rest-with-spring-course" title="The &#8220;REST With Spring&#8221; Course">
+<div class="dropdown--item_icon">
+<svg id="RwsCourseAnimated" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#rws-course-animated"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+REST with Spring
+</h3>
+<p class="dropdown--item_excerpt">
+The canonical reference for building a production grade API with Spring.
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/learn-spring-security-course" title="The “Learn Spring Security” Course">
+<div class="dropdown--item_icon">
+<svg id="LssCourseAnimated" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#lss-course-animated"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Learn Spring Security
+</h3>
+<p class="dropdown--item_excerpt">
+THE unique Spring Security education if you’re working with Java today.
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/learn-spring-course" title="">
+<div class="dropdown--item_icon">
+<svg id="LsAnimatedNew" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#ls-animated-new"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+New: Learn Spring
+</h3>
+<p class="dropdown--item_excerpt">
+From no experience to actually building stuff​.
+<br>
+</p>
+</div>
+</a>
+</li>
+</ul></div><li class="nav--menu_item  nav--menu_has_3_children menu-guides"><a id="menu-item-39050" class="nav--menu_item_anchor nav--menu_item_withDropdown" href="javascript:void(0)">Guides&nbsp;<span class="menu--item_normal">▼</span><span class="menu--item_active">▲</span></a>
+<div class="nav--dropdown">
+<ul class="nav--dropdown_content">
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/persistence-with-spring-series" title="">
+<div class="dropdown--item_icon">
+<svg id="PersistenceGuideSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#persistence-guide-svg"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Persistence
+</h3>
+<p class="dropdown--item_excerpt">
+The Persistence with Spring guides
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/rest-with-spring-series" title="">
+<div class="dropdown--item_icon">
+<svg id="RestGuideSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#rest-guide-svg"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+REST
+</h3>
+<p class="dropdown--item_excerpt">
+The guides on building REST APIs with Spring
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/security-spring" title="">
+<div class="dropdown--item_icon">
+<svg id="SecurityGuideSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#security-guide-svg"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Security
+</h3>
+<p class="dropdown--item_excerpt">
+The Spring Security guides
+</p>
+</div>
+</a>
+</li>
+</ul></div><li class="nav--menu_item  nav--menu_has_4_children menu-about"><a id="menu-item-6138" class="nav--menu_item_anchor nav--menu_item_withDropdown" href="javascript:void(0)">About&nbsp;<span class="menu--item_normal">▼</span><span class="menu--item_active">▲</span></a>
+<div class="nav--dropdown">
+<ul class="nav--dropdown_content">
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/work-with-me" title="">
+<div class="dropdown--item_icon">
+<svg id="SvgConsultingNew" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#svg-consulting-new"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Work With Me
+</h3>
+<p class="dropdown--item_excerpt">
+What I can help with
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/full_archive" title="">
+<div class="dropdown--item_icon">
+<svg id="FullArchiveSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#full-archive-svg"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Full Archive
+</h3>
+<p class="dropdown--item_excerpt">
+The high level overview of all the articles on the site.
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/contribution-guidelines" title="">
+<div class="dropdown--item_icon">
+<svg id="ContributeToBaeldungSvgNew" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#contribute-to-baeldung-svg-new"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+Write For Baeldung
+</h3>
+<p class="dropdown--item_excerpt">
+Become a writer on the site.
+</p>
+</div>
+</a>
+</li>
+<li class="nav--dropdown_item">
+<a class="dropdown--item_anchor transition--background" href="/about" title="">
+<div class="dropdown--item_icon">
+<svg id="AboutBaeldungSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#about-baeldung-svg"></svg>
+</div>
+<div class="dropdown--item_text">
+<h3 class="dropdown--item_title">
+About Baeldung
+</h3>
+<p class="dropdown--item_excerpt">
+About Baeldung.
+</p>
+</div>
+</a>
+</li>
+</ul></div><li class="nav--menu_item  menu-rss"><a id="menu-item-18864" class="nav--menu_item_anchor" href="/feed"><svg id="RssSvg" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#rss-svg"></svg></a><li class="nav--menu_item  menu-search"><a id="menu-item-40489" class="nav--menu_item_anchor" href="#search"><svg id="Search" data-src="/wp-content/uploads/aqua-svg-sprite/aqua-svg-general-sprite.svg#search"></svg></a></ul>
+</div>
+</div>
+</nav>
+<div id="big-nav" class="inactive menu-not-loaded"></div>
+<div id="content" class="container">
+<div class="container-inner">
+<div class="flex-wrap">
+<div id="main" class="flex-col clearfix" role="main">
+<article id="post-36022" class="clearfix post-36022 post type-post status-publish format-standard has-post-thumbnail hentry category-rest category-spring-mvc tag-spring-mvc-basics" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+<meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://google.com/article" />
+<meta itemprop="datePublished" content="July 3, 2018" />
+<meta itemprop="dateModified" content="July 3, 2018" />
+<header>
+
+<div class="page-header"><h1 class="single-title entry-title" itemprop="headline">Using Spring ResponseEntity to Manipulate the HTTP Response</h1>
+<p class="post-modified">Last modified: <span class="updated">April 7, 2019</span></p>
+<div class="meta-row">
+<div class="author vcard" itemprop="author" itemscope itemtype="https://schema.org/Person">
+<span class="author-by"> by </span>
+<span class="author-name fn" itemprop="name">
+<a href="https://www.baeldung.com/author/attila-fejer/" title="Posts by Attila Fejér" rel="author">Attila Fejér</a> </span>
+</div>
+<span itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+<meta itemprop="url" content="https://www.baeldung.com/wp-content/uploads/2016/10/social-Spring-On-Baeldung-3.jpg">
+<meta itemprop="width" content="208">
+<meta itemprop="height" content="208">
+</span>
+<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+<span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+<meta itemprop="url" content="https://www.baeldung.com/wp-content/uploads/2016/10/social-Spring-On-Baeldung-3.jpg">
+<meta itemprop="width" content="208">
+<meta itemprop="height" content="208">
+</span>
+<meta itemprop="name" content="Baeldung">
+</span>
+<ul class="categories">
+<li><a href="https://www.baeldung.com/category/rest/" rel="category tag">REST</a></li><li><a href="https://www.baeldung.com/category/spring/spring-web/spring-mvc/" rel="category tag">Spring MVC</a></li> </ul>
+<ul class="post-tags">
+<li><a href="https://www.baeldung.com/tag/spring-mvc-basics/" rel="post tag">Spring MVC Basics</a></li>
+</ul>
+</div>
+</div>
+</header> 
+<div class='before-post-widgets'>
+<div data-sticky-weight="1" class="before-post-content-widget"><span style="display:none;">REST Top</span> <div class="textwidget"><div class="short_box short_start">
+<h3><b>I just announced the new <em> Learn Spring </em> course, focused on the fundamentals of Spring 5 and Spring Boot 2: </b></h3>
+<p><strong><a href="/ls-course-start">&gt;&gt; CHECK OUT THE COURSE</a></strong></p>
+</div>
+</div>
+</div> </div>
+<section class="post-content clearfix" itemprop="articleBody">
+<div class="wwsgd" style="display:none;"></div><h2 id="introduction">1. Introduction</h2>
+<p>Using Spring, we usually have many ways to achieve the same goal, including fine-tuning HTTP responses.</p>
+<p>In this short tutorial, we&#8217;ll see how to set the body, status, and headers of an HTTP response using <em>ResponseEntity</em>.</p>
+<h2 id="response-entity">2. <em>ResponseEntity</em></h2>
+<p><em>ResponseEntity</em> <strong>represents the whole HTTP response: status code, headers, and body</strong>. Because of it, we can use it to fully configure the HTTP response.</p>
+<p>If we want to use it, we have to return it from the endpoint; Spring takes care of the rest.</p>
+<p><em>ResponseEntity</em> is a generic type. As a result, we can use any type as the response body:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/hello&quot;)
+ResponseEntity&lt;String&gt; hello() {
+    return new ResponseEntity&lt;&gt;(&quot;Hello World!&quot;, HttpStatus.OK);
+}</pre>
+<p>Since we specify the response status programmatically, we can return with different status codes for different scenarios:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/age&quot;)
+ResponseEntity&lt;String&gt; age(
+  @RequestParam(&quot;yearOfBirth&quot;) int yearOfBirth) {
+ 
+    if (isInFuture(yearOfBirth)) {
+        return new ResponseEntity&lt;&gt;(
+          &quot;Year of birth cannot be in the future&quot;, 
+          HttpStatus.BAD_REQUEST);
+    }
+
+    return new ResponseEntity&lt;&gt;(
+      &quot;Your age is &quot; + calculateAge(yearOfBirth), 
+      HttpStatus.OK);
+}</pre>
+<p>Additionally, we can set HTTP headers:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/customHeader&quot;)
+ResponseEntity&lt;String&gt; customHeader() {
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(&quot;Custom-Header&quot;, &quot;foo&quot;);
+        
+    return new ResponseEntity&lt;&gt;(
+      &quot;Custom header set&quot;, headers, HttpStatus.OK);
+}</pre>
+<p>Furthermore, <em>ResponseEntity</em> <strong>provides two nested builder interfaces</strong>: <em>HeadersBuilder</em> and its subinterface, <em>BodyBuilder</em>. Hence we can access their capabilities through the static methods of <em>ResponseEntity</em>.</p>
+<p>The simplest case is a response with a body and HTTP 200 response code:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/hello&quot;)
+ResponseEntity&lt;String&gt; hello() {
+    return ResponseEntity.ok(&quot;Hello World!&quot;);
+}</pre>
+<p>For the most popular HTTP status codes we get static methods:</p>
+<pre class="brush: java; gutter: true">BodyBuilder accepted();
+BodyBuilder badRequest();
+BodyBuilder created(java.net.URI location);
+HeadersBuilder&lt;?&gt; noContent();
+HeadersBuilder&lt;?&gt; notFound();
+BodyBuilder ok();</pre>
+<p>In addition, we can use the <em>BodyBuilder status(HttpStatus status)</em> and the <em>BodyBuilder status(int status)</em> methods to set any HTTP status.</p>
+<p>Finally with <em>ResponseEntity&lt;T&gt; BodyBuilder.body(T body)</em> we can set the HTTP response body:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/age&quot;)
+ResponseEntity&lt;String&gt; age(@RequestParam(&quot;yearOfBirth&quot;) int yearOfBirth) {
+    if (isInFuture(yearOfBirth)) {
+        return ResponseEntity.badRequest()
+            .body(&quot;Year of birth cannot be in the future&quot;);
+    }
+
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(&quot;Your age is &quot; + calculateAge(yearOfBirth));
+}</pre>
+<p>We can also set custom headers:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/customHeader&quot;)
+ResponseEntity&lt;String&gt; customHeader() {
+    return ResponseEntity.ok()
+        .header(&quot;Custom-Header&quot;, &quot;foo&quot;)
+        .body(&quot;Custom header set&quot;);
+}</pre>
+<p>Hence <em>BodyBuilder.body()</em> returns a <em>ResponseEntity</em> instead of <em>BodyBuilder,</em> it should be the last call.</p>
+<p>Note, that with <em>HeaderBuilder</em> we can&#8217;t set any properties of the response body.</p>
+<p>While returning <em>ResponseEntity&lt;T&gt; </em>object from the controller, we might get some exception or error while processing the request and would like to <strong>return error-related information to the user represented as some other type let&#8217;s say E</strong>.</p>
+<p>Spring 3.2 brings support for a global <strong><em>@ExceptionHandler </em>with the new <em>@ControllerAdvice </em>annotation</strong> handles these kinds of scenarios. For in-depth details, refer to our existing article <a href="https://www.baeldung.com/exception-handling-for-rest-with-spring">here</a>.</p>
+<p><strong>While <em>ResponseEntity</em> is very powerful, we shouldn&#8217;t overuse it.</strong> In simple cases, there&#8217;re other options that satisfy our needs and they result in much cleaner code.</p>
+<h2 id="alternatives">3. Alternatives</h2>
+<h3 id="response-body">3.1. <em>@ResponseBody</em></h3>
+<p>In classic Spring MVC applications, endpoints usually return rendered HTML pages. Sometimes we only need to return the actual data, for example, when we use the endpoint with AJAX.</p>
+<p>In such cases, we can mark the request handler method with <em>@ResponseBody</em> and <strong>Spring treats the result value of the method as the HTTP response body</strong> itself.</p>
+<p>For more information, <a href="/spring-request-response-body">this article is a good place to start</a>.</p>
+<h3 id="response-status">3.2. <em>@ResponseStatus</em></h3>
+<p>When an endpoint returns successfully, Spring provides an HTTP 200 (OK) response. If the endpoint throws an exception, Spring looks for an exception handler that tells which HTTP status to use.</p>
+<p>We can mark these methods with @ResponseStatus. Therefore Spring <strong>returns with a custom HTTP status</strong>.</p>
+<p>For more examples, please visit our article about <a href="/spring-response-status">custom status codes</a>.</p>
+<h3 id="direct-manipulation">3.3. Manipulate the Response Directly</h3>
+<p>Spring also lets us access the <em>javax.servlet.http.HttpServletResponse</em> object directly; we only have to declare it as a method argument:</p>
+<pre class="brush: java; gutter: true">@GetMapping(&quot;/manual&quot;)
+void manual(HttpServletResponse response) throws IOException {
+    response.setHeader(&quot;Custom-Header&quot;, &quot;foo&quot;);
+    response.setStatus(200);
+    response.getWriter().println(&quot;Hello World!&quot;);
+}</pre>
+<p>Since Spring provides abstractions and additional capabilities above the underlying implementation, <strong>we shouldn&#8217;t manipulate the response this way</strong>.</p>
+<h2 id="conclusion">4. Conclusion</h2>
+<p>In this article, we saw multiple ways with their benefits and drawbacks to manipulate the HTTP response in Spring.</p>
+<p>As usual, the examples are available <a href="https://github.com/eugenp/tutorials/tree/master/spring-mvc-java">over on GitHub</a>.</p>
+<span id="tve_leads_end_content" style="display: block; visibility: hidden; border: 1px solid transparent;"></span><div class='after-post-widgets'><div data-sticky-weight="1" class="after-post-content-widget"><span style="display:none;">REST bottom</span> <div class="textwidget"><div class="short_box short_end">
+<h3><b>I just announced the new <em>Learn Spring</em> course, focused on the fundamentals of Spring 5 and Spring Boot 2: </b></h3>
+<p><strong><a href="/ls-course-end">&gt;&gt; CHECK OUT THE COURSE</a></strong></p>
+</div>
+</div>
+</div></div><span style="display:none" class="tl-placeholder-f-type-post_footer"></span>
+</section> 
+ 
+</article> 
+
+</div> 
+<div id="sidebar1" class="sidebar flex-col" role="complementary" style="overflow: hidden; max-height:100px;">
+<div class="sticky-widgets" style="visibility: hidden;">
+<div style="display:none" class="tl-widget-container"><div id="widget_thrive_leads-4" data-sticky-weight="1" class="widget widget_thrive_leads"><span style="display:none" class="tl-placeholder-f-type-widget"></span></div></div><div id="text-23" data-sticky-weight="1" class="widget widget_text"> <div class="textwidget"><p><a href="https://www.baeldung.com/datadog" target="_blank" rel="noopener noreferrer"><img src="https://www.baeldung.com/wp-content/uploads/2018/03/201801_APM_ads_set_b_Java2_300.jpg" /></a></p>
+</div>
+</div><div id="text-6" data-sticky-weight="1" class="widget widget_text"> <div class="textwidget"><p><a href="/rws-course" data-mce-href="/rws-course"><img class="aligncenter wp-image-38953 size-full" src="/wp-content/uploads/2018/08/RWS-1-k.jpg" alt="" width="300" height="100" data-mce-src="/wp-content/uploads/2018/08/RWS-1-k.jpg"></a></p>
+</div>
+</div> </div>
+</div>
+</div> 
+</div> 
+</div> 
+<footer id="footer" class="content-info" role="contentinfo">
+<div class="container">
+<div class="container-inner">
+<div class="column-wrapper row">
+<div class="logo-desktop">
+<img src="https://www.baeldung.com/wp-content/themes/baeldung/icon/logo.svg" alt="The Baeldung logo">
+</div>
+<div class="widgets">
+<div id="nav_menu-5" data-sticky-weight="1" class="widget widget_nav_menu"><h4 class="widgettitle">Categories</h4><ul id="menu-categories" class="menu"><li class="current-post-ancestor menu-spring"><a href="https://www.baeldung.com/category/spring/">Spring</a></li>
+<li class="current-post-ancestor active current-post-parent menu-rest"><a href="https://www.baeldung.com/category/rest/">REST</a></li>
+<li class="menu-java"><a href="https://www.baeldung.com/category/java/">Java</a></li>
+<li class="menu-security"><a href="https://www.baeldung.com/category/security-2/">Security</a></li>
+<li class="menu-persistence"><a href="https://www.baeldung.com/category/persistence/">Persistence</a></li>
+<li class="menu-jackson"><a href="https://www.baeldung.com/category/json/jackson/">Jackson</a></li>
+<li class="menu-http-client"><a href="https://www.baeldung.com/category/http/">HTTP Client</a></li>
+<li class="menu-kotlin"><a href="https://www.baeldung.com/category/kotlin/">Kotlin</a></li>
+</ul></div><div id="nav_menu-6" data-sticky-weight="1" class="widget widget_nav_menu"><h4 class="widgettitle">Series</h4><ul id="menu-series" class="menu"><li class="menu-java-back-to-basics-tutorial"><a href="/java-tutorial">Java &#8220;Back to Basics&#8221; Tutorial</a></li>
+<li class="menu-jackson-json-tutorial"><a href="/jackson">Jackson JSON Tutorial</a></li>
+<li class="menu-httpclient-4-tutorial"><a href="/httpclient-guide">HttpClient 4 Tutorial</a></li>
+<li class="menu-rest-with-spring-tutorial"><a href="/rest-with-spring-series">REST with Spring Tutorial</a></li>
+<li class="menu-spring-persistence-tutorial"><a href="/persistence-with-spring-series">Spring Persistence Tutorial</a></li>
+<li class="menu-security-with-spring"><a href="/security-spring">Security with Spring</a></li>
+</ul></div><div id="nav_menu-7" data-sticky-weight="1" class="widget widget_nav_menu"><h4 class="widgettitle">About</h4><ul id="menu-about" class="menu"><li class="menu-about-baeldung"><a href="/about">About Baeldung</a></li>
+<li class="menu-the-courses"><a href="https://courses.baeldung.com">The Courses</a></li>
+<li class="menu-consulting-work"><a href="/consulting">Consulting Work</a></li>
+<li class="menu-meta-baeldung"><a href="http://meta.baeldung.com/">Meta Baeldung</a></li>
+<li class="menu-the-full-archive"><a href="/full_archive">The Full Archive</a></li>
+<li class="menu-write-for-baeldung"><a href="/contribution-guidelines">Write for Baeldung</a></li>
+<li class="menu-editors"><a href="/editors">Editors</a></li>
+<li class="menu-our-partners"><a href="/partners">Our Partners</a></li>
+<li class="menu-advertise-on-baeldung"><a href="/advertise">Advertise on Baeldung</a></li>
+</ul></div> </div>
+<div class="stacked-rows">
+<div id="nav_menu-8" data-sticky-weight="1" class="widget widget_nav_menu"><ul id="menu-terms" class="menu"><li class="menu-terms-of-service"><a href="/terms-of-service">Terms of Service</a></li>
+<li class="menu-privacy-policy"><a href="/privacy-policy">Privacy Policy</a></li>
+<li class="menu-company-info"><a href="/baeldung-company-info">Company Info</a></li>
+<li class="menu-contact"><a href="/contact">Contact</a></li>
+</ul></div> </div>
+<div class="logo-mobile">
+<img src="https://www.baeldung.com/wp-content/themes/baeldung/icon/whiteleaf.svg" alt="The Baeldung Logo">
+</div>
+</div> 
+</div> 
+</div> 
+</footer> 
+</div> 
+<script>
+/* <![CDATA[ */
+var series_data=[];
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '9539554';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/9539554.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+
+<script type="text/javascript">
+// Set to false if opt-in required
+var trackByDefault = true;
+
+function acEnableTracking() {
+	var expiration = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30);
+	document.cookie = "ac_enable_tracking=1; expires= " + expiration + "; path=/";
+	acTrackVisit();
+}
+
+function acTrackVisit() {
+	var trackcmp_email = '';
+	var trackcmp = document.createElement("script");
+	trackcmp.async = true;
+	trackcmp.type = 'text/javascript';
+	trackcmp.src = '//trackcmp.net/visit?actid=223766543&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href);
+	var trackcmp_s = document.getElementsByTagName("script");
+	if (trackcmp_s.length) {
+		trackcmp_s[0].parentNode.appendChild(trackcmp);
+	} else {
+		var trackcmp_h = document.getElementsByTagName("head");
+		trackcmp_h.length && trackcmp_h[0].appendChild(trackcmp);
+	}
+}
+
+if (trackByDefault || /(^|; )ac_enable_tracking=([^;]+)/.test(document.cookie)) {
+	acEnableTracking();
+}
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var count;
+        if ( !jQuery.cookie('wwsgd_visits') ) {
+            count = 1;
+        }
+        else {
+            count = parseInt(jQuery.cookie('wwsgd_visits'), 10) + 1;
+        }
+        jQuery.cookie('wwsgd_visits', count, { expires: 365, path: "/" });
+
+        if ( count <= 20 ) {
+            jQuery(".wwsgd").show();
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://www.baeldung.com/wp-content/cache/autoptimize/js/autoptimize_single_488ca2f56c37f84283fc9be63219304f.js?ver=3.0"></script>
+<script type="text/javascript" src="https://www.baeldung.com/wp-content/cache/autoptimize/js/autoptimize_single_a122e7137e224f646b22b910a779d211.js?ver=3.0"></script>
+<script type="text/javascript" src="https://www.baeldung.com/wp-content/cache/autoptimize/js/autoptimize_single_ba290ac0111d2c3f8e1ce36fbaf6a239.js?ver=3.0"></script>
+<script type="text/javascript">//<![CDATA[
+	SyntaxHighlighter.autoloader(
+	"applescript	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAppleScript.js?ver=3.0"
+	,"as3 actionscript3	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0"
+	,"bash shell	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js?ver=3.0"
+	,"cf coldfusion	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushColdFusion.js?ver=3.0"
+	,"cpp c	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js?ver=3.0"
+	,"c# c-sharp csharp	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0"
+	,"css	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCss.js?ver=3.0"
+	,"delphi pas pascal	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDelphi.js?ver=3.0"
+	,"diff patch	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDiff.js?ver=3.0"
+	,"erl erlang	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushErlang.js?ver=3.0"
+	,"groovy	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushGroovy.js?ver=3.0"
+	,"java	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js?ver=3.0"
+	,"jfx javafx	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJavaFX.js?ver=3.0"
+	,"js jscript javascript	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript.js?ver=3.0"
+	,"perl pl	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPerl.js?ver=3.0"
+	,"php	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPhp.js?ver=3.0"
+	,"plain text	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0"
+	,"ps powershell	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0"
+	,"py python	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js?ver=3.0"
+	,"rails ror ruby rb	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushRuby.js?ver=3.0"
+	,"sass scss	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushSass.js?ver=3.0"
+	,"scala	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushScala.js?ver=3.0"
+	,"sql	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushSql.js?ver=3.0"
+	,"vb vbnet	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushVb.js?ver=3.0"
+	,"xml xhtml xslt html	https://www.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js?ver=3.0"
+	);
+	SyntaxHighlighter.defaults['auto-links'] = true;
+	SyntaxHighlighter.defaults['quick-code'] = true;
+	SyntaxHighlighter.defaults['title'] = '';
+	SyntaxHighlighter.defaults['class-name'] = 'notranslate';
+	SyntaxHighlighter.defaults['collapse'] = false;
+	SyntaxHighlighter.defaults['first-line'] = 1;
+	SyntaxHighlighter.defaults['gutter'] = true;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 4;
+	SyntaxHighlighter.defaults['toolbar'] = true;
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = "Can't find brush for: ";
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = "Brush wasn't configured for html-script option: ";
+	SyntaxHighlighter.all();
+	
+//]]></script>
+
+<script>
+/* <![CDATA[ */
+var fr_data=[];
+/* ]]> */
+</script>
+<script> 
+/* <![CDATA[ */
+var ba_cats=["REST","Spring MVC","Spring Web","Spring"];
+var ba_tags=["Spring MVC Basics"];
+/* ]]> */
+</script>
+<span style="display:none" class="tl-placeholder-f-type-lightbox"></span><script type='text/javascript'>
+/* <![CDATA[ */
+var tve_frontend_options = {"is_editor_page":"","page_events":[],"is_single":"1","ajaxurl":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php","social_fb_app_id":"","dash_url":"https:\/\/www.baeldung.com\/wp-content\/plugins\/thrive-visual-editor\/thrive-dashboard","translations":{"Copy":"Copy"},"post_id":"36022"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='//www.baeldung.com/wp-content/plugins/thrive-leads/js/frontend.min.js?ver=2.1.9.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tve_dash_front = {"ajaxurl":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php","force_ajax_send":"","is_crawler":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.baeldung.com/wp-includes/js/wp-embed.min.js?ver=5.2.2'></script>
+<script type='text/javascript'>
+      function svginit_veggieBurger() {
+        var svgTarget = document.getElementById('veggieBurger');
+        if (svgTarget) {
+          veggieBurger  = new Vivus('veggieBurger', {type: 'delayed', duration: 30,  start: 'autostart'});
+        }
+      }
+      document.addEventListener("DOMContentLoaded", svginit_veggieBurger);
+    
+
+
+          function svginit_17021() {
+            RwsCourseAnimated = new Vivus('RwsCourseAnimated', {type: 'delayed', duration: 60,  start: 'manual'});
+LssCourseAnimated = new Vivus('LssCourseAnimated', {type: 'delayed', duration: 60,  start: 'manual'});
+LsAnimatedNew = new Vivus('LsAnimatedNew', {type: 'delayed', duration: 60,  start: 'manual'});
+            
+          document.getElementById('menu-item-17021').onmouseenter = function(){
+            RwsCourseAnimated.reset().play();
+LssCourseAnimated.reset().play();
+LsAnimatedNew.reset().play();
+          };
+        
+          }
+          document.addEventListener("ready-to-animate-svg", svginit_17021);
+        
+
+
+          function svginit_39050() {
+            PersistenceGuideSvg = new Vivus('PersistenceGuideSvg', {type: 'delayed', duration: 60,  start: 'manual'});
+RestGuideSvg = new Vivus('RestGuideSvg', {type: 'delayed', duration: 60,  start: 'manual'});
+SecurityGuideSvg = new Vivus('SecurityGuideSvg', {type: 'delayed', duration: 60,  start: 'manual'});
+            
+          document.getElementById('menu-item-39050').onmouseenter = function(){
+            PersistenceGuideSvg.reset().play();
+RestGuideSvg.reset().play();
+SecurityGuideSvg.reset().play();
+          };
+        
+          }
+          document.addEventListener("ready-to-animate-svg", svginit_39050);
+        
+
+
+          function svginit_6138() {
+            SvgConsultingNew = new Vivus('SvgConsultingNew', {type: 'delayed', duration: 60,  start: 'manual'});
+FullArchiveSvg = new Vivus('FullArchiveSvg', {type: 'delayed', duration: 60,  start: 'manual'});
+ContributeToBaeldungSvgNew = new Vivus('ContributeToBaeldungSvgNew', {type: 'delayed', duration: 60,  start: 'manual'});
+AboutBaeldungSvg = new Vivus('AboutBaeldungSvg', {type: 'delayed', duration: 60,  start: 'manual'});
+            
+          document.getElementById('menu-item-6138').onmouseenter = function(){
+            SvgConsultingNew.reset().play();
+FullArchiveSvg.reset().play();
+ContributeToBaeldungSvgNew.reset().play();
+AboutBaeldungSvg.reset().play();
+          };
+        
+          }
+          document.addEventListener("ready-to-animate-svg", svginit_6138);
+        
+
+          function svginit_RssSvg() {
+            RssSvg = new Vivus('RssSvg', {type: 'delayed', duration: 60,  start: 'autostart'});
+            
+          document.getElementById('menu-item-18864').onmouseenter = function(){
+            RssSvg.reset().play();
+          };
+        
+          }
+          document.addEventListener("ready-to-animate-svg", svginit_RssSvg);
+        
+
+          function svginit_Search() {
+            Search = new Vivus('Search', {type: 'delayed', duration: 60,  start: 'autostart'});
+            
+          document.getElementById('menu-item-40489').onmouseenter = function(){
+            Search.reset().play();
+          };
+        
+          }
+          document.addEventListener("ready-to-animate-svg", svginit_Search);
+        
+</script>
+<script type="text/javascript">var tcb_post_lists=JSON.parse('[]');</script><script type="text/javascript">/*<![CDATA[*/if ( !window.TL_Const ) {var TL_Const={"security":"f7b74cd197","ajax_url":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php","forms":[],"action_conversion":"tve_leads_ajax_conversion","action_impression":"tve_leads_ajax_impression","ajax_load":1,"main_group_id":6977,"display_options":{"allowed_post_types":[],"flag_url_match":false},"custom_post_data":{"http_referrer":"https:\/\/www.google.com\/"},"current_screen":{"screen_type":4,"screen_id":36022},"ignored_fields":["email","_captcha_size","_captcha_theme","_captcha_type","_submit_option","_use_captcha","g-recaptcha-response","__tcb_lg_fc","__tcb_lg_msg","_state","_form_type","_error_message_option","_back_url","_submit_option","url","_asset_group","_asset_option","mailchimp_optin"]};} else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"f7b74cd197","ajax_url":"https:\/\/www.baeldung.com\/wp-admin\/admin-ajax.php","forms":[],"action_conversion":"tve_leads_ajax_conversion","action_impression":"tve_leads_ajax_impression","ajax_load":1,"main_group_id":6977,"display_options":{"allowed_post_types":[],"flag_url_match":false},"custom_post_data":{"http_referrer":"https:\/\/www.google.com\/"},"current_screen":{"screen_type":4,"screen_id":36022},"ignored_fields":["email","_captcha_size","_captcha_theme","_captcha_type","_submit_option","_use_captcha","g-recaptcha-response","__tcb_lg_fc","__tcb_lg_msg","_state","_form_type","_error_message_option","_back_url","_submit_option","url","_asset_group","_asset_option","mailchimp_optin"]})} /*]]> */</script>
+<script type="text/javascript" defer src="https://www.baeldung.com/wp-content/cache/autoptimize/js/autoptimize_bbcafd1e88ed2ebcc0d823248a0e721f.js"></script></body>
+</html>
+
