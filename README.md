@@ -32,17 +32,13 @@ Will help you to understand how the Spring Framework is using some design patter
 
 [Spring Boot in Action](https://www.amazon.com/Spring-Boot-Action-Craig-Walls/dp/1617292540/ref=sr_1_2?qid=1570963413&refinements=p_27%3ACraig+Walls&s=books&sr=1-2&text=Craig+Walls):
 
- for a deepper understanding of the Spring Boot.
+ for a deepper understanding of the Spring boot module.
 
 ## Youtube channel
 
 [Laurentiu Spilca](https://www.youtube.com/channel/UC0z3MpVGrpSZzClXrYcZBfw):
 
- Laurentiu Spilca made a playlist on Spring Fundamentals, you will find very good content on DI, AOP, Transaction, Data, Rest, Actuator and many more...
-
-[Melardev](https://www.youtube.com/watch?v=d1pRZW0dOIg&list=PLfkTJXI2Tk-cDvcd5pTnpHZXi-XgacpDG):
-
-On his channel, Melardev explained the archirtecture of the Spring MVC module with deep understanding.
+ Laurentiu Spilca made a playlist on Spring Fundamentals, you will find very good content on DI, AOP, Transaction, Data, Rest, Actuator and many more, recently he made a playlist about spring security...
 
 ## Pluralsight courses(paid but worth it)
 
@@ -75,4 +71,4 @@ On his channel, Melardev explained the archirtecture of the Spring MVC module wi
 Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisite of the hard subject.
 It depends also on your background on Spring and some design patterns used by the framework.
 
-In parallel with that, I read a lot of answers from stackoverflow. Just google what you don't understand.
+In parallel with that, I read a lot of answers from stackoverflow, just google what you don't understand.
