@@ -1,6 +1,6 @@
 # Preparation for the Spring 5 Certification 
 
-This repository contains my code examples for the preparation of the certification.
+This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repos contains also good references to master the fundamentals of the framework, so It's not only for a certification purpose.
 
 The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
 
@@ -14,26 +14,27 @@ To help you to prepare the certification, I recommend to learn from the followin
 ## The best resourse to follow
 [Core Spring 5 Certification in Detail](https://leanpub.com/corespring5certificationindetail) by [Ivan Krizsan
 ](https://leanpub.com/u/ivan-krizsan)
-This book should be a must for everyone.
+This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framwork I don't recommand to begin with this book because it is a just a summury and it contains some responses that could be helpful to pass the certification.    
 
 [ivankrizsan's blog](https://www.ivankrizsan.se/)
 
 
 ## Books
 
-[Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
-
-Will help you to understand how the Spring Framework is using some design patterns internally.
-
-
 [Spring in Action: Covers Spring 4](https://www.amazon.com/Spring-Action-Covers-4/dp/161729120X/ref=sr_1_2?keywords=spring+in+action&qid=1570962746&sr=8-2):
 
- I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming..., It is not mandatory to read every chapter in the book.
+I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming.... It is not mandatory to read every chapter in the book. It is the first resource i have checked, I didn't read all the chapters, but only a few of them, let's say 50%.
+ 
+
+[Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
+
+A really good book that helped me to dig deeper into the framwork. It will help you to understand how the Spring Framework is using some design patterns internally.
+
 
 [Spring Boot in Action](https://www.amazon.com/Spring-Boot-Action-Craig-Walls/dp/1617292540/ref=sr_1_2?qid=1570963413&refinements=p_27%3ACraig+Walls&s=books&sr=1-2&text=Craig+Walls):
 
- for a deepper understanding of the Spring boot module.
-
+For a deeper understanding of the Spring boot module. The book is not big but it gives more details about the spring boot modules. Apart from that, I have watched many youtube videos to get much understanding of the spring boot modules, I recommend to check some talks given by [Stéphane Nicoll](https://www.youtube.com/results?search_query=spring+boot+stephane+nicol) about spring boot.
+ 
 ## Youtube channel
 
 [Laurentiu Spilca](https://www.youtube.com/channel/UC0z3MpVGrpSZzClXrYcZBfw):
