@@ -1,4 +1,19 @@
 # Preparation for the Spring 5 Certification 
+
+- [Preparation for the Spring 5 Certification](#preparation-for-the-spring-5-certification)
+  - [Introduction](#introduction)
+  - [The best resources to follow](#the-best-resources-to-follow)
+  - [Books](#books)
+  - [Youtube channel](#youtube-channel)
+  - [Pluralsight courses(paid but worth it)](#pluralsight-coursespaid-but-worth-it)
+      - [AOP](#aop)
+      - [Spring JDBC](#spring-jdbc)
+      - [Spring data jpa](#spring-data-jpa)
+      - [Spring Boot](#spring-boot)
+  - [Stackoverflow questions](#stackoverflow-questions)
+  - [Other ressources](#other-ressources)
+  - [Personal opinion](#personal-opinion)
+
 ## Introduction
 
 This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repository contains also good references to master the fundamentals of the framework, so It's not only for a certification purpose.
@@ -12,7 +27,7 @@ To help you to prepare the certification, I recommend to learn from the followin
 
 
 
-## The best resource to follow
+## The best resources to follow
 [Core Spring 5 Certification in Detail](https://leanpub.com/corespring5certificationindetail) by [Ivan Krizsan
 ](https://leanpub.com/u/ivan-krizsan)
 This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framwork I don't recommand to begin with, because it is a just a summury and it contains some responses that could be helpful to pass the certification.    
