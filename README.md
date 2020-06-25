@@ -1,20 +1,21 @@
 # Preparation for the Spring 5 Certification 
+## Introduction
 
-This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repos contains also good references to master the fundamentals of the framework, so It's not only for a certification purpose.
+This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repository contains also good references to master the fundamentals of the framework, so It's not only for a certification purpose.
 
 The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
 
 
-To prepare my certification, I read many books and articles, many Pluralsight courses and some Youtube videos on specific subjects.
+To prepare my certification, I read many books and articles, I viewed many Pluralsight courses and some Youtube videos on specific subjects.
 
 To help you to prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
 
 
 
-## The best resourse to follow
+## The best resource to follow
 [Core Spring 5 Certification in Detail](https://leanpub.com/corespring5certificationindetail) by [Ivan Krizsan
 ](https://leanpub.com/u/ivan-krizsan)
-This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framwork I don't recommand to begin with this book because it is a just a summury and it contains some responses that could be helpful to pass the certification.    
+This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framwork I don't recommand to begin with, because it is a just a summury and it contains some responses that could be helpful to pass the certification.    
 
 [ivankrizsan's blog](https://www.ivankrizsan.se/)
 
@@ -23,7 +24,7 @@ This book should be a must for everyone willing to pass the certification, it sh
 
 [Spring in Action: Covers Spring 4](https://www.amazon.com/Spring-Action-Covers-4/dp/161729120X/ref=sr_1_2?keywords=spring+in+action&qid=1570962746&sr=8-2):
 
-I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming.... It is not mandatory to read every chapter in the book. It is the first resource i have checked, I didn't read all the chapters, but only a few of them, let's say 50%.
+I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming.... It is not mandatory to read every chapter in the book. It is the first resource i have checked, I didn't read the full book, but only a few of chapters, let's say 50% of the book.
  
 
 [Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
@@ -60,6 +61,28 @@ For a deeper understanding of the Spring boot module. The book is not big but it
 [Spring Boot: Efficient Development, Configuration, and Deployment](https://app.pluralsight.com/library/courses/spring-boot-efficient-development-configuration-deployment/table-of-contents)
 
 
+
+## Stackoverflow questions
+Here is some responses to some very important questions:
+- [java - @RequestBody and @ResponseBody annotations in Spring - Stack Overflow](https://stackoverflow.com/questions/11291933/requestbody-and-responsebody-annotations-in-spring).
+- [java - ApplicationContext and ServletContext - Stack Overflow](https://stackoverflow.com/questions/31931848/applicationcontext-and-servletcontext).
+- [Differences between Abstract Factory Pattern and Factory Method - Stack Overflow](https://stackoverflow.com/questions/5739611/differences-between-abstract-factory-pattern-and-factory-method).
+- [java - BeanFactoryPostProcessor and BeanPostProcessor in lifecycle events - Stack Overflow](https://stackoverflow.com/questions/30455536/beanfactorypostprocessor-and-beanpostprocessor-in-lifecycle-events).
+- [java - Difference between &lt;context:annotation-config&gt; vs &lt;context:component-scan&gt; - Stack Overflow](https://stackoverflow.com/questions/7414794/difference-between-contextannotation-config-vs-contextcomponent-scan).
+- [java - Difference between applicationContext.xml and spring-servlet.xml in Spring Framework - Stack Overflow](https://stackoverflow.com/questions/3652090/difference-between-applicationcontext-xml-and-spring-servlet-xml-in-spring-frame).
+- [java - Difference between Interceptor and Filter in Spring MVC - Stack Overflow](https://stackoverflow.com/questions/35856454/difference-between-interceptor-and-filter-in-spring-mvc/35856496).
+- [java - Hibernate SessionFactory vs. EntityManagerFactory - Stack Overflow](https://stackoverflow.com/questions/5640778/hibernate-sessionfactory-vs-entitymanagerfactory).
+- [java - How do I update an entity using spring-data-jpa? - Stack Overflow](https://stackoverflow.com/questions/11881479/how-do-i-update-an-entity-using-spring-data-jpa).
+- [java - How do servlets work? Instantiation, sessions, shared variables and multithreading - Stack Overflow](https://stackoverflow.com/questions/3106452/how-do-servlets-work-instantiation-sessions-shared-variables-and-multithreadi).
+- [java - How to accept Date params in a GET request to Spring MVC Controller? - Stack Overflow](https://stackoverflow.com/questions/15164864/how-to-accept-date-params-in-a-get-request-to-spring-mvc-controller).
+- [java - How to access a value defined in the application.properties file in Spring Boot - Stack Overflow](https://stackoverflow.com/questions/30528255/how-to-access-a-value-defined-in-the-application-properties-file-in-spring-boot).
+- [java - PUT request in Spring MVC - Stack Overflow](https://stackoverflow.com/questions/35878351/put-request-in-spring-mvc).
+- [java - Spring MVC: How to perform validation? - Stack Overflow](https://stackoverflow.com/questions/12146298/spring-mvc-how-to-perform-validation).
+- [java - What are the possible values of the #Hibernate hbm2ddl.auto configuration and what do they do - Stack Overflow](https://stackoverflow.com/questions/438146/what-are-the-possible-values-of-the-hibernate-hbm2ddl-auto-configuration-and-wh).
+- [java - What is @ModelAttribute in Spring MVC? - Stack Overflow](https://stackoverflow.com/questions/3423262/what-is-modelattribute-in-spring-mvc).
+- [java - What is a NoSuchBeanDefinitionException and how do I fix it? - Stack Overflow](https://stackoverflow.com/questions/39173982/what-is-a-nosuchbeandefinitionexception-and-how-do-i-fix-it).
+ 
+
 ## Other ressources
 [Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains the responses of the question of the official study-guide.
 
@@ -67,9 +90,9 @@ For a deeper understanding of the Spring boot module. The book is not big but it
 
 [Git repository](https://github.com/vojtechruz/spring-core-cert-notes-4.2): This third repository, even if it is about the spring 4 certification, you can find very good content and explanation about the spring ecosystem.
 
-### Personal opinion
+## Personal opinion
 
-Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisite of the hard subject.
+Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisites of the hard subject.
 It depends also on your background on Spring and some design patterns used by the framework.
 
-In parallel with that, I read a lot of answers from stackoverflow, just google what you don't understand.
+In parallel with that, I read a lot of awnsers from stackoverflow, just google what you don't understand.
