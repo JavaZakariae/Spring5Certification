@@ -30,7 +30,7 @@ To help you to prepare the certification, I recommend to learn from the followin
 ## The best resources to follow
 [Core Spring 5 Certification in Detail](https://leanpub.com/corespring5certificationindetail) by [Ivan Krizsan
 ](https://leanpub.com/u/ivan-krizsan)
-This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framwork I don't recommand to begin with, because it is a just a summury and it contains some responses that could be helpful to pass the certification.    
+This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framework I don't recommend to begin with, because it is a just a summary and it contains some responses that could be helpful to pass the certification.    
 
 [ivankrizsan's blog](https://www.ivankrizsan.se/)
 
@@ -44,7 +44,7 @@ I don't recommend the fifth edition, the 4th edition is a good start for everyon
 
 [Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
 
-A really good book that helped me to dig deeper into the framwork. It will help you to understand how the Spring Framework is using some design patterns internally.
+A really good book that helped me to dig deeper into the framework. It will help you to understand how the Spring Framework is using some design patterns internally.
 
 
 [Spring Boot in Action](https://www.amazon.com/Spring-Boot-Action-Craig-Walls/dp/1617292540/ref=sr_1_2?qid=1570963413&refinements=p_27%3ACraig+Walls&s=books&sr=1-2&text=Craig+Walls):
@@ -96,7 +96,15 @@ Here is some responses to some very important questions:
 - [java - What are the possible values of the #Hibernate hbm2ddl.auto configuration and what do they do - Stack Overflow](https://stackoverflow.com/questions/438146/what-are-the-possible-values-of-the-hibernate-hbm2ddl-auto-configuration-and-wh).
 - [java - What is @ModelAttribute in Spring MVC? - Stack Overflow](https://stackoverflow.com/questions/3423262/what-is-modelattribute-in-spring-mvc).
 - [java - What is a NoSuchBeanDefinitionException and how do I fix it? - Stack Overflow](https://stackoverflow.com/questions/39173982/what-is-a-nosuchbeandefinitionexception-and-how-do-i-fix-it).
- 
+- [java - What's the difference between ResponseEntity and HttpEntity in Spring_ - Stack Overflow](https://stackoverflow.com/questions/42829823/whats-the-difference-between-responseentity-and-httpentity-in-spring).
+- [Spring JdbcTemplate execute vs update - Stack Overflow](https://stackoverflow.com/questions/39454507/spring-jdbctemplate-execute-vs-update).
+- [spring - How to implement RowMapper using java lambda expression - Stack Overflow](https://stackoverflow.com/questions/41923360/how-to-implement-rowmapper-using-java-lambda-expression).
+- [spring boot - Difference between using MockMvc with SpringBootTest and Using WebMvcTest - Stack Overflow](https://stackoverflow.com/questions/39865596/difference-between-using-mockmvc-with-springboottest-and-using-webmvctest).
+- [What is the difference between BeanPostProcessor and init/destroy method in Spring? - Stack Overflow](https://stackoverflow.com/questions/9862127/what-is-the-difference-between-beanpostprocessor-and-init-destroy-method-in-spri).
+- [Spring Boot - Loading Initial Data - Stack Overflow](https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data).
+- [java - BeanPostProcessor confusion - Stack Overflow](https://stackoverflow.com/questions/9761839/beanpostprocessor-confusion?rq=1).
+
+
 
 ## Other ressources
 [Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains the responses of the question of the official study-guide.
@@ -110,4 +118,4 @@ Here is some responses to some very important questions:
 Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisites of the hard subject.
 It depends also on your background on Spring and some design patterns used by the framework.
 
-In parallel with that, I read a lot of awnsers from stackoverflow, just google what you don't understand.
+In parallel with that, I read a lot of answers from Stackoverflow, just google what you don't understand.
