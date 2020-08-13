@@ -11,7 +11,7 @@
       - [Spring data jpa](#spring-data-jpa)
       - [Spring Boot](#spring-boot)
   - [Stackoverflow questions](#stackoverflow-questions)
-  - [Other ressources](#other-ressources)
+  - [Other resources](#other-resources)
   - [Personal opinion](#personal-opinion)
 
 ## Introduction
@@ -103,10 +103,13 @@ Here is some responses to some very important questions:
 - [What is the difference between BeanPostProcessor and init/destroy method in Spring? - Stack Overflow](https://stackoverflow.com/questions/9862127/what-is-the-difference-between-beanpostprocessor-and-init-destroy-method-in-spri).
 - [Spring Boot - Loading Initial Data - Stack Overflow](https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data).
 - [java - BeanPostProcessor confusion - Stack Overflow](https://stackoverflow.com/questions/9761839/beanpostprocessor-confusion?rq=1).
+- [Using Spring ResponseEntity to Manipulate the HTTP Response](https://www.baeldung.com/spring-response-entity).
+- [Spring MVC and the @ModelAttribute Annotation | Baeldung](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation).
+- [Spring AOP AspectJ @AfterThrowing Example](https://howtodoinjava.com/spring-aop/aspectj-afterthrowing-annotation-example).
+- [Difference between getOne and findById in Spring Data JPA?](https://www.javacodemonk.com/difference-between-getone-and-findbyid-in-spring-data-jpa-3a96c3ff).
+- [Difference Between BeanFactory and ApplicationContext in Spring](https://dzone.com/articles/difference-between-beanfactory-and-applicationcont).
 
-
-
-## Other ressources
+## Other resources
 [Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains the responses of the question of the official study-guide.
 
 [Git repository](https://github.com/LinnykOleh/Spring): This second repository contains the responses to the question of the official study-guide and also explanations of the theoretical notion we deal with in the Certification.
