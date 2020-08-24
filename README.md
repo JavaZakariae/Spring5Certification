@@ -21,7 +21,7 @@ This repository contains my code examples for the preparation of the certificati
 The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
 
 
-To prepare my certification, I read many books and articles, I viewed many Pluralsight courses and some Youtube videos on specific subjects.
+To prepare my certification, I read many books and articles, I watched many Pluralsight courses and some Youtube videos on specific subjects.
 
 To help you to prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
 
@@ -30,7 +30,7 @@ To help you to prepare the certification, I recommend to learn from the followin
 ## The best resources to follow
 [Core Spring 5 Certification in Detail](https://leanpub.com/corespring5certificationindetail) by [Ivan Krizsan
 ](https://leanpub.com/u/ivan-krizsan)
-This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framework I don't recommend to begin with, because it is a just a summary and it contains some responses that could be helpful to pass the certification.    
+This book should be a must for everyone willing to pass the certification, it should be checked only as a last step before passing the certification, so for the newcomers to the framework I don't recommend to begin with, because it is just a summary and it contains some responses that could be helpful to pass the certification.    
 
 [ivankrizsan's blog](https://www.ivankrizsan.se/)
 
@@ -39,7 +39,7 @@ This book should be a must for everyone willing to pass the certification, it sh
 
 [Spring in Action: Covers Spring 4](https://www.amazon.com/Spring-Action-Covers-4/dp/161729120X/ref=sr_1_2?keywords=spring+in+action&qid=1570962746&sr=8-2):
 
-I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the Fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming.... It is not mandatory to read every chapter in the book. It is the first resource i have checked, I didn't read the full book, but only a few of chapters, let's say 50% of the book.
+I don't recommend the fifth edition, the 4th edition is a good start for everyone willing to understand the fundamentals of the Framework, like Dependency Injection, Aspect Oriented Programming.... It is not mandatory to read every chapter. It is the first resource i have checked, I didn't read the full book, but only few chapters, let's say 50% of the book.
  
 
 [Spring 5 Design Patterns](https://www.amazon.com/Spring-Design-Patterns-application-development/dp/1788299450/ref=sr_1_1?crid=ZRVPY8S85GBD&keywords=spring+design+patterns&qid=1570962674&sprefix=spring+design+pa%2Caps%2C216&sr=8-1) :
@@ -110,15 +110,15 @@ Here is some responses to some very important questions:
 - [Difference Between BeanFactory and ApplicationContext in Spring](https://dzone.com/articles/difference-between-beanfactory-and-applicationcont).
 
 ## Other resources
-[Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains the responses of the question of the official study-guide.
+[Git repository](https://github.com/vshemyako/spring-certification-5.0): This repository contains responses of the the official study-guide questions.
 
-[Git repository](https://github.com/LinnykOleh/Spring): This second repository contains the responses to the question of the official study-guide and also explanations of the theoretical notion we deal with in the Certification.
+[Git repository](https://github.com/LinnykOleh/Spring): This second repository contains the responses of the official study-guide questions and also explanations of the theoretical notion we deal with in the Certification.
 
 [Git repository](https://github.com/vojtechruz/spring-core-cert-notes-4.2): This third repository, even if it is about the spring 4 certification, you can find very good content and explanation about the spring ecosystem.
 
 ## Personal opinion
 
-Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisites of the hard subject.
+Sometimes even if the resources are valuable, it can be hard to understand some subjects, for my personal experience, i try to see the prerequisites of the complicated subject.
 It depends also on your background on Spring and some design patterns used by the framework.
 
 In parallel with that, I read a lot of answers from Stackoverflow, just google what you don't understand.
