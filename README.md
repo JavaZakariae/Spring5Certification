@@ -1,4 +1,3 @@
-![forks](https://img.shields.io/github/forks/javazakariae/Spring5Certification?style=social)
 ![stars](https://img.shields.io/github/stars/javazakariae/spring5certification?style=social)
 ![last commit date](https://img.shields.io/github/last-commit/javazakariae/spring5certification)
 
