@@ -24,9 +24,9 @@ This repository contains my code examples for the preparation of the certificati
 The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
 
 
-To prepare my certification, I read many books and articles, I watched many Pluralsight courses and some Youtube videos on specific subjects.
+To prepare my certification, I read few books, a lot of articles, I watched many Pluralsight courses and some Youtube videos on specific subjects.
 
-To help you to prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
+To help you prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
 
 
 
