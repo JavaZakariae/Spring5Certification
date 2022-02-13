@@ -19,14 +19,14 @@
 
 ## Introduction
 
-This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repository contains also good references to master the fundamentals of the framework, so It's not only for a certification purpose.
+This repository contains my code examples for the preparation of the certification. I have passed the certification on the 20th july of 2019, I have been certified with a score of 88%. This repository contains some good references to master the fundamentals of the framework, so It's not only for a certification purpose.
 
-The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily respond to those questions, you will pass the certification.
+The certification questions are based on the official [study-guide](https://d1fto35gcfffzn.cloudfront.net/academy/Spring-Professional-Certification-Study-Guide.pdf), so I recommend to focus on those questions. In my opinion, if you can easily awnsers those questions, you will pass the certification.
 
 
 To prepare my certification, I read few books, a lot of articles, I watched many Pluralsight courses and some Youtube videos on specific subjects.
 
-To help you prepare the certification, I recommend to learn from the following resources, some are not free, but they deserve that.
+To help you prepare the certification, I recommend to learn from the following resources, some are not free, but they thy are worth.
 
 
 
@@ -81,7 +81,7 @@ For a deeper understanding of the Spring boot module. The book is not big but it
 
 
 ## Stackoverflow questions
-Here is some responses to some very important questions:
+Here are some responses to some very important questions:
 - [java - @RequestBody and @ResponseBody annotations in Spring - Stack Overflow](https://stackoverflow.com/questions/11291933/requestbody-and-responsebody-annotations-in-spring).
 - [java - ApplicationContext and ServletContext - Stack Overflow](https://stackoverflow.com/questions/31931848/applicationcontext-and-servletcontext).
 - [Differences between Abstract Factory Pattern and Factory Method - Stack Overflow](https://stackoverflow.com/questions/5739611/differences-between-abstract-factory-pattern-and-factory-method).
