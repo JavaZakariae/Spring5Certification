@@ -26,7 +26,7 @@ The certification questions are based on the official [study-guide](https://d1ft
 
 To prepare my certification, I read few books, a lot of articles, I watched many Pluralsight courses and some Youtube videos on specific subjects.
 
-To help you prepare the certification, I recommend to learn from the following resources, some are not free, but they thy are worth.
+To help you prepare the certification, I recommend to learn from the following resources, some are not free, but they are worth.
 
 
 
