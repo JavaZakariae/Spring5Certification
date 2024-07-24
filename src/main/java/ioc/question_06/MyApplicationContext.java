@@ -1,6 +1,4 @@
 package ioc.question_06;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 
 /**

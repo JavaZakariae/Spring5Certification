@@ -10,11 +10,8 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @ToString
 public class Person {
-
     private String name;
     private int age;
     private LocalDate dateOfBirth;
     private Profession profession;
-
-
 }
